@@ -16,3 +16,4 @@ Do not install Superpowers, Pocock, or Addy whole. Argus intake before any third
 | yagni | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
 | modern-python | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
 | golang-testing | samber (placeholder) | | | Placeholder only. Argus intake before any content. |
+| golang-security | samber/cc-skills-golang (`golang-security`) | 22c58a55a0a799b901aa251172923180bad9e010 (intent pin; body court rewrite) | MIT upstream / court rewrite | Argus CLEAR ~9:58pm CT Sat Sep 5 (conditional); SKILL only / no evals / no scripts; pairs with golang-testing / golang-safety (separate PRs); Heph |
