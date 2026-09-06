@@ -1,0 +1,39 @@
+# Goal — finish without a human (grok CLI)
+
+**Repo:** `alexderz/private-shared-skills`  
+**Audience:** Alex running grok CLI until Bot token reset.  
+This **is** the private skills repo other CLIs should read.
+
+## Done means
+
+1. CI (fmt-lint) green on `main`.
+2. Every directory under `skills/*/SKILL.md` is listed accurately in `SOURCES.md` + `AGENTS.md`.
+3. No empty skill placeholders; no vendor Superpowers paste; no `scripts/` intake copies.
+4. Skill bodies stay short, precise, and Spector-clean (oblique dangerous-command wording).
+
+## Stages
+
+### A — Inventory truth
+- Diff `skills/*/SKILL.md` vs `SOURCES.md` vs `AGENTS.md`. Fix drift only.
+
+### B — Quality pass on existing bodies (no remint wave)
+- Clarity, broken refs, contradictory Always/Ask/Never rows.
+- Do **not** invent new skill packs. Do **not** re-open merged compress work (#9–#24 era) unless a bug is proven.
+
+### C — Docs accuracy
+- Keep `docs/upping-coding-game-hld.md` Landed/Next factual if you touch related skills; no SDLC process churn.
+
+## Explicit non-goals
+
+- Court Linear board theater / Origin PR merges.
+- Installing skills onto Grok Bot computers (Alex/Bot does that).
+- Third-party pack reinstalls.
+
+## Commands
+
+```bash
+git pull --ff-only origin main
+# run repo CI locally if documented; else edit + push and watch GHA
+git checkout -b cli/finish-$(date +%Y%m%d)
+# …sync inventory, tighten bodies, push PR…
+```
