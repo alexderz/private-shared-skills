@@ -32,12 +32,12 @@ Skill ids with `SKILL.md` on `main` (do not remint #16–#20):
 - `golang-testing`
 - `golang-security`
 - `golang-safety`
+- `yagni`
 
 Court-owned placeholders / empty dirs (no body claim until SHA + `SKILL.md` on `main`):
 
 - `court-linear-sdlc`
 - `cursor-cloud-agents-when`
-- `yagni`
 
 Load by id from this repo — never from managed Superpowers. Spector hygiene refine landed as PSS #20 (shell-safety FP soften + security-hardening AE1).
 
