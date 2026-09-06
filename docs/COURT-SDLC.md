@@ -10,6 +10,12 @@ Skills home: this repo (`alexderz/private-shared-skills`). Origin is inbound fro
 
 Alex locks (~9:04pm CT Sat Sep 5): GitHub designs from onset; Stage −1 Repo before HLD; Stage 4 loop until DoD; CA/grok with bot oversight; notify landed+verified.
 
+Argus locks (~9:07pm CT Sat Sep 5, already on heph-forge#9):
+
+1. Argus gates at **LLD (trust boundaries)** and **PR**, not only the monthly vuln stage.
+2. Review before integrate = **fresh-context** (not the implementer session).
+3. Stage 4 DoD: skill diffs match pinned SHAs in [SOURCES.md](../SOURCES.md); CA PRs into this repo still pass Argus intake — **workers do not bypass**.
+
 No third-party skill bodies live in this file or in Stage 0 `skills/` directories. Pin SHAs in [SOURCES.md](../SOURCES.md). Argus intake before any vendor content.
 
 ## Hierarchy (Linear)
@@ -47,6 +53,8 @@ Only if needed. Evidence in git on GitHub.
 
 Document + git copy on GitHub. Templates, status mapping, bot after-act, path conventions.
 
+**Argus gate (trust boundaries):** before groom/implement, Argus reviews the LLD for trust boundaries (authn/z, secrets, egress, data class, who may write what). This is a gate, not a later monthly note. Do not skip to Stage 4 without it when the change touches a boundary.
+
 ### Stage 3 Groom
 
 Break into Tasks/Bugs with acceptance criteria and an LLD link.
@@ -57,13 +65,17 @@ Implement and test at max safe parallelism. **Do not exit Stage 4 after one pass
 
 DoD includes: acceptance on the Linear issue, tests/verification evidence, PR cites Linear ID, no silent scope leftover. Notify **landed+verified** — not “pushed” and not “LGTM without evidence.”
 
-### Stage 5 Review gate
+**Skill-home DoD (this repo):** any skill-body diff must match the pinned SHA in [SOURCES.md](../SOURCES.md) for that id. Empty SHA means no body may land. Cloud Agent PRs into `alexderz/private-shared-skills` still pass **Argus intake**. Workers (CA, grok CLI, Origin) **do not bypass** intake, SHA pins, or Argus LLD/PR gates.
 
-Review agent approves the PR only if it meets the ticket + LLD.
+### Stage 5 Review gate (fresh-context, before integrate)
+
+Review **before** Stage 6 integrate. The reviewer is a **fresh-context** session — not the implementer session that wrote the diff. Same-session self-review does not count.
+
+Reviewer approves only if the PR meets the ticket + LLD **and** the Argus PR gate (intake, SHA pins, trust-boundary deltas). Argus at PR is a gate, not deferred to Stage 8 monthly.
 
 ### Stage 6 Integration
 
-More Tasks, not a special ceremony.
+Only after Stage 5 fresh-context review. More Tasks, not a special ceremony.
 
 ### Stage 7 Release
 
@@ -73,6 +85,8 @@ Coherent chunk. CHANGELOG in the repo.
 
 Vuln / updates / new solutions review. Recurrence note only until Themis/Alex cut a Task. No watcher, no cron ([DER-45](https://linear.app/derzhi-grok-bot/issue/DER-45/epic-monthly-vulnupdate-review)).
 
+Monthly is **not** the Argus gate. Argus already gated trust boundaries at LLD and the PR. Monthly is cadence review of vulns/updates/new solutions, not a substitute for those gates.
+
 ## Workers (CA / grok)
 
 | Worker | When |
@@ -81,7 +95,9 @@ Vuln / updates / new solutions review. Recurrence note only until Themis/Alex cu
 | **grok CLI** | Box-local gated builds; use when CA credit degrades |
 | **Origin** | Inbound mirror of GitHub. Not the design source of truth. |
 
-Bot oversight: Heph adversarial-reviews other bots’ tools when the work needs it. Cedalion owns mechanical CI/hooks. Argus owns security gates and skill intake. Themis after-acts the board; does not bless before ship.
+Bot oversight: Heph adversarial-reviews other bots’ tools when the work needs it. Cedalion owns mechanical CI/hooks. Argus owns security gates (LLD trust boundaries + PR) and skill intake. Themis after-acts the board; does not bless before ship.
+
+**Workers do not bypass Argus.** A CA (or grok) PR into this skills home still requires Argus intake and SHA-pin match. Remote/local worker choice is not an exemption.
 
 Notify only when work is **landed and verified**.
 
@@ -100,7 +116,7 @@ Skills are **tools**, keyed by role. Improvise beyond predefinition. Do not remi
 | --- | --- |
 | **Heph** | Architect and delivery |
 | **Cedalion** | Mechanical CI, hooks, cleanup |
-| **Argus** | Security gates across the SDLC, including skill intake |
+| **Argus** | Security gates at LLD (trust boundaries) and PR, plus skill intake — not only monthly vuln |
 | **Themis** | Court process and SDLC after-act |
 
 ## Skill table
