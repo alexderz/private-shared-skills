@@ -4,6 +4,8 @@ This repository is the **Court shared skills home** (Alex private). It is not an
 
 GitHub is the source of truth. Origin is inbound from GitHub ([codebase](https://cursor.com/codebase/alexderz/private-shared-skills)). Do not write skill bodies only on Origin.
 
+**Do not use the managed Superpowers plugin.** Court process skills live under `skills/<id>/` in this repo (or will after Argus remint). Prefer sand-workflow / installed court skills that twin these ids. Load court skills from this repo by id — never from Cursor managed Superpowers.
+
 ## Skills are tools, keyed by pantheon role
 
 | Role | Job |
@@ -21,18 +23,18 @@ Authoritative table: [SOURCES.md](SOURCES.md).
 
 Skill ids (directories under `skills/`):
 
-- `court-linear-sdlc` — court-owned
-- `cursor-cloud-agents-when` — court-owned
-- `tdd`
+- `court-linear-sdlc` — court-owned (placeholder)
+- `cursor-cloud-agents-when` — court-owned (placeholder)
+- `tdd` — remint in flight after Alex ~9:24pm CT remint GO; body is not on `main` yet
 - `pr-review`
-- `security-hardening`
+- `security-hardening` — court-owned body on `main` (`skills/security-hardening/SKILL.md`)
 - `shell-safety`
 - `verify-before-done`
 - `yagni`
 - `modern-python`
 - `golang-testing` — samber placeholder
 
-Stage 0: each directory is a placeholder (`.gitkeep` only). **No `SKILL.md` bodies yet.**
+Placeholders (`.gitkeep` only) remain for empty ids. `security-hardening` already has `SKILL.md` on `main`. Bodies land via Argus intake + court compress. Do not claim a remint body exists until it is on `main`.
 
 ## Intake (Argus)
 
