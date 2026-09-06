@@ -23,7 +23,7 @@ Did not initialize it, bound-check it, or copy it? Treat it as a latent panic or
 | Nil, slices/maps, numbers, defer, zero values | Injection, crypto, secrets, path traversal → `golang-security` / `security-hardening` |
 | Stopping the next crash | Debugging a crash already in hand |
 
-Pair, do not merge. Do not land `golang-testing` or `golang-security` bodies in this PR. Do not install this into Grok Bot workflows.
+Pair, do not merge the three Go skills into one body. Attackers stay in `golang-security`; proof stays in `golang-testing`.
 
 ## Always
 
@@ -68,7 +68,6 @@ Do not self-except. Record the decision.
 | `npx skills add` / marketplace install of the samber pack | INTAKE: clone, do not install |
 | Copy `evals/`, `scripts/`, or `references/` into this skill dir | Conditional CLEAR is SKILL only |
 | Treat this skill as a vuln audit | Attackers are `golang-security` + Argus |
-| Wire this into Grok Bot workflows | Not this cut |
 
 ## Traps (compressed)
 
