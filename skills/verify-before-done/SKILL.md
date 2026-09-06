@@ -34,9 +34,9 @@ Skip a step = claiming, not verifying.
 | Fresh command for this claim | Softening verify for throwaway spikes you will delete | “Should pass” / “probably” / “seems” |
 | Full suite or scoped command that actually covers the claim | Partial checks when full suite is expensive — name what you skipped | Trusting agent “success” without VCS/diff or independent run |
 | Red-green proof for new regression tests | HITL when evidence is ambiguous or flaky | Satisfaction (“Great!”, “Done!”) before evidence |
-| Line-by-line checklist for requirements DoD | | Extrapolating from linter to build, or build to product fix |
+| Line-by-line checklist for requirements DoD | Unsupervised push to protected / prod deploy / secret rotate | Extrapolating from linter to build, or build to product fix |
 
-**HITL:** if Argus or CI marks a check flaky/MEDIUM, do not self-clear — show Alex/Argus the output and wait.
+**HITL (Spector EA2 / autonomous cmds):** run verification for evidence — bots oversee workers. Do **not** unsupervised destructive/irreversible actions (push to protected branches, prod deploy, secret rotate) without human/Alex. If Argus or CI marks a check flaky/MEDIUM, do not self-clear — show Alex/Argus the output and wait.
 
 ## Claim → evidence
 
