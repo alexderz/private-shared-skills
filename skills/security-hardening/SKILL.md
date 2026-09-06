@@ -69,7 +69,7 @@ Court host and account locks are **Never**, not Ask first. There is no “superv
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Argus** | This gate at **LLD (trust boundaries)** and **PR**; skill intake ([docs/INTAKE.md](../../docs/INTAKE.md)) | Monthly vuln cadence (Stage 8 is not this gate) |
+| **Argus** | This gate at **LLD (trust boundaries)** and **PR**; skill intake (repo path `docs/INTAKE.md`) | Monthly vuln cadence (Stage 8 is not this gate) |
 | **Alex** | Vuln severity calls, Alex-pc4, bank/Gmail/LastPass, exceptions | Day-to-day intake scans |
 | **Cedalion** | CI secret-scan and dependency-audit **hooks** | Rewriting this skill or skipping Argus because CI is green |
 | **Heph / implementer** | Building behind the gate | Self-review as the Argus PR gate (fresh-context review) |
