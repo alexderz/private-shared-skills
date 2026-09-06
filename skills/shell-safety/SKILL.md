@@ -37,13 +37,13 @@ Model-chosen commands, generated scripts, and `$(...)` from untrusted text are c
 
 | Topic | Why it is a stop |
 | --- | --- |
-| `sudo`, setuid, new capabilities | Privilege is a trust-boundary widen |
-| `rm -rf` / wipe outside the repo or this task's `/tmp` | Blast radius |
-| `curl \| sh`, `wget \| bash`, `npx` / vendor installers | INTAKE: clone, do not run installers |
+| Elevated shell, setuid, new capabilities | Privilege is a trust-boundary widen |
+| Recursive force-remove / wipe outside the repo or this task's temp dir | Blast radius |
+| Pipe remote content into a shell; unpinned vendor installers | INTAKE: clone, do not run installers |
 | Force-push, history rewrite, deleting shared remote branches | Irreversible git |
-| Writes under `~`, `/etc`, or credential dirs | Secrets and host config |
+| Writes under home, `/etc`, or credential dirs | Secrets and host config |
 | New network egress or piping remote content | New trust |
-| `set +e` / disabling strict mode for a whole script | Fail-open |
+| Disabling strict mode (`set +e` and kin) for a whole script | Fail-open |
 | Running an opaque script you have not read | Same as untrusted client input |
 
 Record the decision. Do not self-except.
@@ -52,16 +52,16 @@ Record the decision. Do not self-except.
 
 | Never | Why |
 | --- | --- |
-| `eval`, `bash -c`, or `source` of user or model text | Injection; security-hardening Never |
-| `curl … \| sh` / unpinned remote scripts | Supply chain |
-| `rm -rf /`, `rm -rf "$var"` without `${var:?}`, unquoted destructive globs | Host wipe |
+| Dynamic shell evaluation of user or model text (`eval` / `-c` / `source` of untrusted input) | Injection; security-hardening Never |
+| Pipe unpinned remote script into a shell | Supply chain |
+| Recursive force-remove of filesystem root or unguarded variable paths; unquoted destructive globs | Host wipe |
 | Secrets in scripts, git, or command lines that will be logged | History is forever |
 | Install Superpowers / Pocock / Addy packs for this skill | Dual routers; Alex removed the plugin |
 | Copy `scripts/` into a court skill dir | INTAKE quarantine |
 | Alex-pc4 / Windows without Alex approval | Host lock |
 | Bank / Gmail / LastPass via shell | Out of agent scope |
-| Bind `0.0.0.0` or public mesh from a one-liner | Network becomes the client |
-| `chmod 777` / world-writable secrets | Data-class fail |
+| Bind all interfaces or public mesh from a one-liner | Network becomes the client |
+| World-writable mode bits on secrets | Data-class fail |
 
 Court host and account locks are **Never**, not Ask first.
 
@@ -79,8 +79,8 @@ Workers do not bypass. A green ShellCheck is not an Argus clear.
 ## Red flags
 
 - “The model said the command is safe”
-- “I’ll pipe it to bash just this once”
-- “sudo is faster than asking”
+- “I’ll pipe remote content into a shell just this once”
+- “Elevated shell is faster than asking”
 - “Empty path is fine”
 - “Install the Superpowers plugin to get shell safety”
 - “Alex-pc4 is convenient”
