@@ -54,20 +54,20 @@ flowchart LR
 | Security gates | Argus | Intake, Always/Ask/Never, Spector |
 | Board | Themis | After-act; does not bless ships |
 
-## Landed (as of ~10:22pm CT Sat Sep 5)
+## Landed (as of ~10:31pm CT Sat Sep 5)
 
 - Stage −1 / layout: PSS Stage 0 dirs, SOURCES, CI fmt-lint, INTAKE
-- Skill bodies on main: `tdd`, `verify-before-done`, `pr-review`, `shell-safety`, `security-hardening`, `modern-python`, `golang-testing`, `golang-security`, `golang-safety` (+ Spector hygiene #20)
-- AGENTS pilots: PSS inventory; `spending-tracker`; `aws-instance`; `grok-bot-perm`
-- Parked Alex: Origin heph-forge #9 COURT-SDLC → #10 AGENTS
+- Skill bodies on main: `tdd`, `verify-before-done`, `pr-review`, `shell-safety`, `security-hardening`, `modern-python`, `golang-testing`, `golang-security`, `golang-safety`, `yagni` (+ Spector hygiene #20)
+- Stage 0 HLD on GitHub: this file (PSS#22); Origin twin heph-forge#11 (parked Alex)
+- AGENTS pilots: PSS inventory; `spending-tracker`; `aws-instance`; `grok-bot-perm`; `claw-metrics`
+- Grok Bot workflows twin installed for landed PSS skill ids (incl. `yagni`)
 
 ## Next cuts (board-ordered)
 
-1. This HLD on GitHub (this file).
-2. Thin `yagni` skill or AGENTS restraint bullets (20–40 lines).
-3. Optional AGENTS: `claw-metrics` (court-adjacent); defer `skylight-mcp`.
-4. Stage 2 LLD only when a concrete product change needs trust-boundary detail.
-5. Origin heph-forge #9→#10 when Alex merges in Cursor UI.
+1. **Alex Cursor UI:** Origin heph-forge #9 COURT-SDLC → #10 AGENTS → #11 HLD twin (order matters).
+2. Stage 2 LLD stub on GitHub only when a concrete product change needs trust-boundary detail (names-only first if unclear).
+3. Defer: `skylight-mcp` AGENTS.
+4. Soft: Linear Epic/Task for Stage 0 HLD after-act (Themis).
 
 ## Risks
 
@@ -80,8 +80,8 @@ flowchart LR
 
 ## Open questions
 
-- Confirm HLD twin path on Origin heph-forge `projects/upping-coding-game/` after #9 merges (optional mirror; GitHub remains SoT).
-- When to mint Linear Epic for Stage 0 HLD Task (Themis).
+- After Alex merges #9→#11: confirm Origin `projects/upping-coding-game/HLD.md` twin stays aligned with this GitHub SoT (GitHub wins on drift).
+- When to mint Linear Epic/Task for Stage 0 HLD after-act (Themis).
 
 ## References
 
