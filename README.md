@@ -53,6 +53,7 @@ See [SOURCES.md](SOURCES.md) for upstream, SHA, license, and notes.
 ## Related
 
 - First cherry-pick candidates (Argus intake): [docs/CHERRY-PICK-CANDIDATES.md](docs/CHERRY-PICK-CANDIDATES.md)
+- Cedalion CI hooks (first cut, fmt/lint): [docs/CI-HOOKS-PLAN.md](docs/CI-HOOKS-PLAN.md)
 - Court SDLC (GitHub copy): [docs/COURT-SDLC.md](docs/COURT-SDLC.md)
 - Linear project: [Upping our coding game](https://linear.app/derzhi-grok-bot/project/upping-our-coding-game-979b787dfbb9)
 - heph-forge companion: `projects/upping-coding-game/COURT-SDLC.md` (heph-forge#9 amended)
