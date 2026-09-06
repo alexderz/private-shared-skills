@@ -23,7 +23,7 @@ Improvise beyond predefinition when the work needs it. Do not remint a skill tha
 
 ## Intake rules (Argus first)
 
-Stage 0 is an **empty skill home** ready for Argus intake and later cherry-picks.
+Placeholders remain for empty ids. Bodies land via Argus intake and court compress.
 
 - Do **not** install Superpowers, Pocock, or Addy as a whole pack.
 - Pin every third-party cherry-pick **SHA** in [SOURCES.md](SOURCES.md). Empty SHA cells mean the body is not here yet.
@@ -31,7 +31,7 @@ Stage 0 is an **empty skill home** ready for Argus intake and later cherry-picks
 - **No auto-update.** No marketplace install. No scripts. No secrets.
 - Court-owned skills (`court-linear-sdlc`, `cursor-cloud-agents-when`) are written here; they are not vendor copies.
 
-Directories under `skills/<id>/` exist as placeholders (`.gitkeep` only). There are **no `SKILL.md` bodies** in Stage 0.
+Directories under `skills/<id>/` are placeholders (`.gitkeep` only) until a body lands. `security-hardening` already has `SKILL.md` on `main`.
 
 ## Skill ids
 
@@ -43,7 +43,7 @@ See [SOURCES.md](SOURCES.md) for upstream, SHA, license, and notes.
 | `cursor-cloud-agents-when` | Court-owned |
 | `tdd` | Third-party candidate — Argus intake before content |
 | `pr-review` | Third-party candidate — Argus intake before content |
-| `security-hardening` | Third-party candidate — Argus intake before content |
+| `security-hardening` | Court-owned body on `main` (Argus Always/Ask/Never) |
 | `shell-safety` | Third-party candidate — Argus intake before content |
 | `verify-before-done` | Third-party candidate — Argus intake before content |
 | `yagni` | Third-party candidate — Argus intake before content |
