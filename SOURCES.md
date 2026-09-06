@@ -10,7 +10,7 @@ Do not install Superpowers, Pocock, or Addy whole. Argus intake before any third
 | cursor-cloud-agents-when | court-owned (this repo) | | | When to use Cursor Cloud Agents. No vendor body. |
 | tdd | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
 | pr-review | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
-| security-hardening | court-owned (compressed Always/Ask/Never; Addy-inspired, not vendor body) | court-owned | court | Argus primary. |
+| security-hardening | court-owned (this repo) | e207b9012d33b55014053617cf2992dca1619c70 (merge of PR #3); blob 94c76a9977d7d22542f8b26d93d818b2488d40ae for skills/security-hardening/SKILL.md | court | Argus DER-50 Always/Ask/Never compress + docs/INTAKE.md; not a vendor body |
 | shell-safety | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
 | verify-before-done | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
 | yagni | TBD — pin after Argus intake | | | Do not install Superpowers/Pocock/Addy whole. |
