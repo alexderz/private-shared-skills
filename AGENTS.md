@@ -21,20 +21,25 @@ Pick the tool that matches the role. Improvise when the work needs it. Do not re
 
 Authoritative table: [SOURCES.md](SOURCES.md).
 
-Skill ids (directories under `skills/`):
+Skill ids with `SKILL.md` on `main` (do not remint #16–#20):
 
-- `court-linear-sdlc` — court-owned (placeholder)
-- `cursor-cloud-agents-when` — court-owned (placeholder)
-- `tdd` — remint in flight after Alex ~9:24pm CT remint GO; body is not on `main` yet
-- `pr-review`
-- `security-hardening` — court-owned body on `main` (`skills/security-hardening/SKILL.md`)
-- `shell-safety`
+- `tdd`
 - `verify-before-done`
-- `yagni`
+- `pr-review`
+- `shell-safety`
+- `security-hardening`
 - `modern-python`
-- `golang-testing` — samber placeholder
+- `golang-testing`
+- `golang-security`
+- `golang-safety`
 
-Placeholders (`.gitkeep` only) remain for empty ids. `security-hardening` already has `SKILL.md` on `main`. Bodies land via Argus intake + court compress. Do not claim a remint body exists until it is on `main`.
+Court-owned placeholders / empty dirs (no body claim until SHA + `SKILL.md` on `main`):
+
+- `court-linear-sdlc`
+- `cursor-cloud-agents-when`
+- `yagni`
+
+Load by id from this repo — never from managed Superpowers. Spector hygiene refine landed as PSS #20 (shell-safety FP soften + security-hardening AE1).
 
 ## Intake (Argus)
 
