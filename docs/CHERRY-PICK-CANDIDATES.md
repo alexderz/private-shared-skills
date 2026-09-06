@@ -25,7 +25,7 @@ Heph names the SHA set after the first Argus clear. This file is not a pin list.
 | `verify-before-done` | [obra/superpowers](https://github.com/obra/superpowers) (`verification-before-completion`) | No done without fresh evidence | Same overlap risk; Argus decides |
 | `pr-review` | [mattpocock/skills](https://github.com/mattpocock/skills) (`code-review` dual-axis) | Standards vs Spec unmerged | **Rename** off `/code-review` collision. Court id stays `pr-review` |
 | `security-hardening` | court-owned (Argus Always/Ask/Never compress) | [DER-50](https://linear.app/derzhi-grok-bot/issue/DER-50/argus-alwaysasknever-security-hardening-compress) — not a vendor cherry-pick | Already landed on `main` ([#3](https://github.com/alexderz/private-shared-skills/pull/3)). Do not remint |
-| `shell-safety` | court-owned ≤80 lines preferred | Safe shell defaults for Cedalion/Argus | [konstruktoid](https://github.com/konstruktoid) bash-secure as **reference only** — not a vendor install |
+| `shell-safety` | court-owned ≤80 lines preferred | Safe shell defaults for Cedalion/Argus | konstruktoid bash-secure as **reference only** — not a vendor install |
 | `modern-python` | [trailofbits/skills](https://github.com/trailofbits/skills) `modern-python` | uv / ruff / ty / pytest | CC-BY-SA; on-demand later |
 | `golang-testing` | [samber/cc-skills-golang](https://github.com/samber/cc-skills-golang) (`golang-testing`) | Go idioms the Big Three lack | On-demand later |
 
