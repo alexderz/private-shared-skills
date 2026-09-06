@@ -48,6 +48,7 @@ Empty SHA cells mean the body must not exist yet.
 ## Related
 
 - README: [README.md](README.md)
+- Court SDLC (GitHub copy): [docs/COURT-SDLC.md](docs/COURT-SDLC.md)
 - Linear: [Upping our coding game](https://linear.app/derzhi-grok-bot/project/upping-our-coding-game-979b787dfbb9)
-- heph-forge COURT-SDLC: `projects/upping-coding-game/COURT-SDLC.md`
+- heph-forge companion: `projects/upping-coding-game/COURT-SDLC.md` (heph-forge#9)
 - Issue cut: [DER-46](https://linear.app/derzhi-grok-bot/issue/DER-46/stage-0-court-sdlc-skills-home-layout)

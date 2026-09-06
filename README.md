@@ -52,7 +52,8 @@ See [SOURCES.md](SOURCES.md) for upstream, SHA, license, and notes.
 
 ## Related
 
+- Court SDLC (GitHub copy): [docs/COURT-SDLC.md](docs/COURT-SDLC.md)
 - Linear project: [Upping our coding game](https://linear.app/derzhi-grok-bot/project/upping-our-coding-game-979b787dfbb9)
-- heph-forge COURT-SDLC: `projects/upping-coding-game/COURT-SDLC.md`
+- heph-forge companion: `projects/upping-coding-game/COURT-SDLC.md` (heph-forge#9 amended)
 
 Agents landing in this repo: start at [AGENTS.md](AGENTS.md).
