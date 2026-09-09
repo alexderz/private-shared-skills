@@ -18,3 +18,26 @@ Do not install Superpowers, Pocock, or Addy whole. Argus intake before any third
 | golang-testing | samber/cc-skills-golang (`golang-testing`) | 22c58a55a0a799b901aa251172923180bad9e010 | MIT upstream / court rewrite | SKILL only; skip evals/clawhub; Argus CLEAR conditional; Heph |
 | golang-security | samber/cc-skills-golang (`golang-security`) | 22c58a55a0a799b901aa251172923180bad9e010 (intent pin; body court rewrite) | MIT upstream / court rewrite | Argus CLEAR ~9:58pm CT Sat Sep 5 (conditional); SKILL only / no evals / no scripts; pairs with golang-testing / golang-safety (separate PRs); Heph |
 | golang-safety | samber/cc-skills-golang (`golang-safety`) | 22c58a55a0a799b901aa251172923180bad9e010 | MIT upstream / court rewrite | Argus CLEAR (conditional) ~9:58pm CT Sat Sep 5; SKILL only / no evals / no scripts/; compress not paste; pair golang-testing + golang-security (separate PRs); Heph |
+| language-router | court-owned (this repo) | court-owned | court | Map only. Pointers do not count as a load. Cap 1–2 language skills. |
+| lang-go | court-owned pointer (this repo) | court-owned | court | Routes to golang-safety / golang-testing / golang-security. Does not remint. |
+| lang-python | court-owned pointer (this repo) | court-owned | court | Routes to modern-python. Does not remint. |
+| lang-shell | court-owned pointer (this repo) | court-owned | court | Routes to shell-safety. Does not remint. |
+| lang-rust | court-owned (this repo) | court-owned | court | Distill, not Microsoft/leonardomso dump. |
+| lang-js-ts | court-owned (this repo) | court-owned | court | TS-strict default; JS is the subset. |
+| lang-c | court-owned (this repo) | court-owned | court | Bounds, alloc, sanitizers. strncpy is not safe strcpy. |
+| lang-cpp | court-owned (this repo) | court-owned | court | RAII, Rule of 0. Split from C. |
+| lang-csharp | court-owned (this repo) | court-owned | court | Nullable, IDisposable, async. |
+| lang-java | court-owned (this repo) | court-owned | court | Language only. No Spring. |
+| lang-kotlin | court-owned (this repo) | court-owned | court | Null safety, coroutines. No Compose religion. |
+| lang-ruby | court-owned (this repo) | court-owned | court | Language only. No Rails religion. |
+| lang-php | court-owned (this repo) | court-owned | court | PHP 8+ types. No eval. No md5 passwords. |
+| lang-swift | court-owned (this repo) | court-owned | court | Optionals, value types, Sendable. |
+| lang-dart | court-owned (this repo) | court-owned | court | Language only. No Flutter architecture. |
+| lang-sql | court-owned (this repo) | court-owned | court | Parameterize. Postgres default. |
+| lang-web-markup | court-owned (this repo) | court-owned | court | HTML+CSS+a11y. One skill. |
+| lang-lua | court-owned (this repo) | court-owned | court | 1-based, pairs vs ipairs. |
+| lang-docker | court-owned (this repo) | court-owned | court | Non-root, pinned bases, no secrets in layers. |
+| lang-terraform | court-owned (this repo) | court-owned | court | Plan is read. State is sensitive. |
+| lang-makefile | court-owned (this repo) | court-owned | court | Real DAG. Quoted vars. |
+| lang-powershell | court-owned (this repo) | court-owned | court | No iex. Stop on error. |
+| lang-protobuf | court-owned (this repo) | court-owned | court | Fields forever. Do not edit generated stubs. |
