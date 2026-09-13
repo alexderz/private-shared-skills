@@ -34,6 +34,10 @@ Skill ids with `SKILL.md` on `main` (do not remint #16–#20):
 - `golang-safety`
 - `yagni`
 
+Court-owned Metis triage (this PR; Grok skill-link `409434f87027f115d70f6f2fba6b211d`; progressive-research wrapper). Do not remint.
+
+- `buying-researcher`
+
 Language pack (this PR; Argus clear before merge). Do not remint the Go / Python / Shell court ids above.
 
 - `language-router`
