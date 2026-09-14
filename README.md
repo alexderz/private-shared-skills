@@ -100,4 +100,5 @@ See [SOURCES.md](SOURCES.md) for upstream, SHA, license, and notes.
 - First cherry-pick candidates: [docs/CHERRY-PICK-CANDIDATES.md](docs/CHERRY-PICK-CANDIDATES.md)
 - CI hooks (fmt/lint): [docs/CI-HOOKS-PLAN.md](docs/CI-HOOKS-PLAN.md)
 
-Agents landing in this repo: start at [AGENTS.md](AGENTS.md).
+Agents landing in this repo: start at [AGENTS.md](AGENTS.md). Claude
+Code reads [CLAUDE.md](CLAUDE.md), which only points at AGENTS.md.

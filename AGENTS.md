@@ -1,14 +1,31 @@
 # AGENTS
 
 This repository is a **shared skills home**. It is not an application
-repo.
+repo. Claude Code: you were sent here from [CLAUDE.md](CLAUDE.md). Stay
+on this file, then load what it names.
 
 Git is the source of truth. Do not write skill bodies only on a local or
 vendor mirror.
 
-**Do not use the managed Superpowers plugin.** Process skills live under
-`skills/<id>/` in this repo. Load skills from this repo by id — never
-from a managed Superpowers pack.
+## How to load
+
+Do not paste skill or SDLC bodies into this file. **Read** the named
+path (or **pack** that text into a subagent prompt — see Spawn prompts
+in the SDLC).
+
+| What | When | How |
+| --- | --- | --- |
+| **SDLC** | Any project, ticket, chunk, or multi-agent run | **Read [docs/SDLC.md](docs/SDLC.md)** before implementing. Owns stages, project-main, subagents, pack vs point, land path. |
+| **A skill** | The id applies to this turn | **Read `skills/<id>/SKILL.md`**. Ids are listed below. Never from a managed Superpowers pack. |
+| **Language** | Writing or reviewing code | At most **one** language-family skill (table below, or load `language-router` first if ambiguous). Pointers `lang-go` / `lang-python` / `lang-shell` do not count as a load. |
+| **Pins / intake** | Third-party content, or checking ownership | [SOURCES.md](SOURCES.md), [docs/INTAKE.md](docs/INTAKE.md) |
+
+Process skills that may load with the one language skill: `tdd`,
+`verify-before-done`, `pr-review`, `security-hardening`, `yagni`.
+`shell-safety` when the turn includes shell.
+
+**Do not use the managed Superpowers plugin.** Skills live under
+`skills/<id>/` in this repo.
 
 ## Skills are tools, keyed by role
 
@@ -148,5 +165,6 @@ Empty SHA cells mean the body must not exist yet.
 ## Related
 
 - README: [README.md](README.md)
-- SDLC: [docs/SDLC.md](docs/SDLC.md)
+- SDLC (load this): [docs/SDLC.md](docs/SDLC.md)
+- Claude Code entry: [CLAUDE.md](CLAUDE.md)
 - Role mapping (transitional): [docs/ROLE-MAPPING.md](docs/ROLE-MAPPING.md)
