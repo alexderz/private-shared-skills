@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Swift — *.swift, Pac
 
 # Swift
 
-Court-owned. Compatible with `tdd`, `verify-before-done`, `pr-review`,
+Compatible with `tdd`, `verify-before-done`, `pr-review`,
 `security-hardening`, `yagni`. No `scripts/`.
 
 ## Iron law

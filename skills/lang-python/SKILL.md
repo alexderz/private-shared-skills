@@ -1,9 +1,9 @@
 ---
 name: lang-python
-description: use this when the change is Python and you need the court toolchain pointer — routes to modern-python. do not use as a second Python body. do not use for other languages.
+description: use this when the change is Python and you need the toolchain pointer — routes to modern-python. do not use as a second Python body. do not use for other languages.
 ---
 
-# Python (router to court id)
+# Python (router)
 
 **This id routes.** Load `modern-python`. Do not remint uv/ruff/ty/pytest
 advice. Compatible with `tdd`, `verify-before-done`, `pr-review`,

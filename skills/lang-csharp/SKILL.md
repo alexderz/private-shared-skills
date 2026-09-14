@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing C# — *.cs, *.csproj,
 
 # C#
 
-Court-owned language guide. Compatible with `tdd`, `verify-before-done`,
+Language guide. Compatible with `tdd`, `verify-before-done`,
 `pr-review`, `security-hardening`, `yagni`. No `scripts/`.
 
 ## Iron law

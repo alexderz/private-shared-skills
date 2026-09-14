@@ -5,7 +5,7 @@ description: use this when the files in play could match more than one language 
 
 # Language router
 
-Court map. Points at existing ids (`golang-safety`, `modern-python`,
+Map. Points at existing ids (`golang-safety`, `modern-python`,
 `shell-safety`) and the `lang-*` guides in this pack. **Not** a
 Superpowers / Pocock / Addy router. No `scripts/`.
 
@@ -77,4 +77,4 @@ Say so. Official docs only.
 
 - "Load Go testing and safety and security to be thorough"
 - "Polyglot repo, load every matching skill"
-- "Install the vendor language pack instead of the court id"
+- "Install the vendor language pack instead of the id in this repo"

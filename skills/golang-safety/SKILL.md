@@ -5,9 +5,9 @@ description: use this when writing or reviewing Go for nil panics, typed-nil int
 
 # Go safety
 
-Court rewrite of samber/cc-skills-golang `golang-safety` @ `22c58a55`. **Not** a vendor paste. **Not** an `npx` / marketplace pack. **SKILL.md only** — no `evals/`, no `scripts/`, no `references/`. PSS id: `golang-safety`.
+Rewrite of samber/cc-skills-golang `golang-safety` @ `22c58a55`. **Not** a vendor paste. **Not** an `npx` / marketplace pack. **SKILL.md only** — no `evals/`, no `scripts/`, no `references/`. Id: `golang-safety`.
 
-**Argus CLEAR (conditional)** ~9:58pm CT Sat Sep 5. Safety is *our* bugs. Attackers belong in `golang-security` (separate PR) and `security-hardening`. Proof belongs in `golang-testing` (separate PR) and `tdd`.
+**security CLEAR (conditional):** SKILL only. Safety is *our* bugs. Attackers belong in `golang-security` (separate PR) and `security-hardening`. Proof belongs in `golang-testing` (separate PR) and `tdd`.
 
 ## Iron law
 
@@ -40,7 +40,7 @@ Pair, do not merge the three Go skills into one body. Attackers stay in `golang-
 | Guard integer division by zero | Integer `/ 0` panics; float `/ 0` is Inf/NaN |
 | Usable zero value; `sync.Once` if lazy-init can race | `var x T` must not panic on first use |
 | Prefer generics over `any` when the set is known | Compiler, not a runtime panic |
-| `errcheck`, `forcetypeassert`, `nilerr`, `govet`, `staticcheck` | Cedalion static catch |
+| `errcheck`, `forcetypeassert`, `nilerr`, `govet`, `staticcheck` | **tester** static catch |
 
 Go 1.25+ reflection: `reflect.TypeAssert[T](v)` — not `v.Interface().(T)`.
 
@@ -53,7 +53,7 @@ Go 1.25+ reflection: `reflect.TypeAssert[T](v)` — not `v.Interface().(T)`.
 | Concurrent map read/write | Wrong skill; needs sync, not a comment |
 | `init()` order across files | Unspecified; use a constructor |
 | Integer overflow an attacker can drive | `golang-security`, not a safety nit |
-| "Linters will catch it" without a fresh run | Cedalion evidence, not vibes |
+| "Linters will catch it" without a fresh run | **tester** evidence, not vibes |
 
 Do not self-except. Record the decision.
 
@@ -67,7 +67,7 @@ Do not self-except. Record the decision.
 | `==` on computed floats | Silent wrong branch |
 | `npx skills add` / marketplace install of the samber pack | INTAKE: clone, do not install |
 | Copy `evals/`, `scripts/`, or `references/` into this skill dir | Conditional CLEAR is SKILL only |
-| Treat this skill as a vuln audit | Attackers are `golang-security` + Argus |
+| Treat this skill as a vuln audit | Attackers are `golang-security` + **security** |
 
 ## Traps (compressed)
 
@@ -145,16 +145,16 @@ func one(path string) error {
 
 Exported accessors that hand back `[]T` or `map[K]V` return `slices.Clone` / `maps.Clone`, not the live field.
 
-## Court roles
+## Roles
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Heph** | Applying this gate when writing or reviewing Go | Installing the samber pack beside PSS |
-| **Argus** | Intake CLEAR; overflow-as-vuln → security skills | Day-to-day nil coaching |
-| **Cedalion** | gofmt / staticcheck / errcheck hooks | Claiming DoD from fmt-only green |
-| **Themis** | After-act | Blessing a panic class that skipped the gate |
+| **builder** | Applying this gate when writing or reviewing Go | Installing the samber pack beside these ids |
+| **security** | Intake CLEAR; overflow-as-vuln → security skills | Day-to-day nil coaching |
+| **tester** | gofmt / staticcheck / errcheck hooks | Claiming DoD from fmt-only green |
+| **manager** | After-act | Blessing a panic class that skipped the gate |
 
-Workers do not bypass intake. A green `gofmt` is not an Argus clear.
+Workers do not bypass intake. A green `gofmt` is not a **security** clear.
 
 ## Red flags
 
@@ -170,4 +170,4 @@ Stop. Initialize, bound-check, or copy. Or ask.
 
 ## Upstream pin
 
-Intent: [samber/cc-skills-golang](https://github.com/samber/cc-skills-golang) `golang-safety` @ `22c58a55a0a799b901aa251172923180bad9e010`. Body is a court rewrite. See [SOURCES.md](../../SOURCES.md).
+Intent: [samber/cc-skills-golang](https://github.com/samber/cc-skills-golang) `golang-safety` @ `22c58a55a0a799b901aa251172923180bad9e010`. Body is a rewrite. See [SOURCES.md](../../SOURCES.md).

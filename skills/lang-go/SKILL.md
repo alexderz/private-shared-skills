@@ -1,17 +1,17 @@
 ---
 name: lang-go
-description: use this when the change is Go but it is unclear which court Go skill to load — routes to golang-safety, golang-testing, or golang-security. do not use as a fourth Go body. do not use for other languages.
+description: use this when the change is Go but it is unclear which Go skill to load — routes to golang-safety, golang-testing, or golang-security. do not use as a fourth Go body. do not use for other languages.
 ---
 
-# Go (router to court ids)
+# Go (router)
 
-**This id routes.** Do not remint Go advice. Load **one** existing court skill.
+**This id routes.** Do not remint Go advice. Load **one** existing Go skill.
 Compatible with `tdd`, `verify-before-done`, `pr-review`, `security-hardening`,
 `yagni`. No `scripts/`.
 
 ## Iron law
 
-**Pick one court Go skill. Never load all three. Never write a parallel Go guide.**
+**Pick one Go skill. Never load all three. Never write a parallel Go guide.**
 
 ## Load
 
@@ -31,7 +31,7 @@ go test ./...
 go test -race ./...
 ```
 
-Add `staticcheck` / `errcheck` when Cedalion already wired them. Read the output.
+Add `staticcheck` / `errcheck` when **tester** already wired them. Read the output.
 
 ## Combined PR checklist
 

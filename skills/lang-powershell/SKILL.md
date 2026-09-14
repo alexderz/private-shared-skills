@@ -5,7 +5,7 @@ description: use this when writing or reviewing PowerShell — *.ps1, *.psm1. do
 
 # PowerShell
 
-Court-owned. Compatible with `tdd`, `verify-before-done`, `pr-review`,
+Compatible with `tdd`, `verify-before-done`, `pr-review`,
 `security-hardening`, `yagni`. No `scripts/`.
 
 ## Iron law

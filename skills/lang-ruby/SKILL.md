@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Ruby — *.rb, Gemfile
 
 # Ruby
 
-Court-owned. Language, not a Rails pack. Compatible with `tdd`,
+Language, not a Rails pack. Compatible with `tdd`,
 `verify-before-done`, `pr-review`, `security-hardening`, `yagni`. No
 `scripts/`.
 

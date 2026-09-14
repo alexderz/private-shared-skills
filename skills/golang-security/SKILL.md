@@ -5,9 +5,9 @@ description: use this when writing, reviewing, or auditing Go for exploitable is
 
 # Go security
 
-Court rewrite of samber/cc-skills-golang `golang-security` @ `22c58a55`. **Not** a vendor paste. **SKILL only** — no `evals/`, no `scripts/`, no `references/`. Compatible with `security-hardening`: **LLM output is untrusted**; the system prompt is not a boundary.
+Rewrite of samber/cc-skills-golang `golang-security` @ `22c58a55`. **Not** a vendor paste. **SKILL only** — no `evals/`, no `scripts/`, no `references/`. Compatible with `security-hardening`: **LLM output is untrusted**; the system prompt is not a boundary.
 
-Pairs with PSS `golang-testing` (race/fuzz proof) and `golang-safety` (non-exploitable panics / slice aliasing). Separate PRs OK. Do not install the samber pack.
+Pairs with `golang-testing` (race/fuzz proof) and `golang-safety` (non-exploitable panics / slice aliasing). Separate PRs OK. Do not install the samber pack.
 
 ## Iron law
 
@@ -48,9 +48,9 @@ Pairs with PSS `golang-testing` (race/fuzz proof) and `golang-safety` (non-explo
 | Public pprof / debug mux | `/debug/pprof` is a leak if reachable |
 | `SameSite=None` or cookie `Domain` | CSRF / cross-site widening |
 | Skipping `-race` or fuzz on a security-touching change | Proof belongs with `golang-testing` |
-| Review/audit growing write or deploy tools | eduardo-sl — review reads and reports |
+| Review/audit growing write or deploy tools | Review skills should not write — read, report |
 
-Record the decision on the LLD or Linear issue. Do not self-except.
+Record the decision on the LLD or ticket. Do not self-except.
 
 ## Never
 
@@ -66,11 +66,11 @@ Record the decision on the LLD or Linear issue. Do not self-except.
 | Bind `0.0.0.0` or public mesh from a one-off | Network becomes the client |
 | World-writable files (`0777` / `0666`) | Data-class fail |
 | PII, tokens, or passwords in logs | `security-hardening` Never |
-| Bank / Gmail / LastPass, or Alex-pc4 without Alex | Court host / account locks |
+| Personal finance, mail, password stores, or extra hosts without the operator | Host / account locks |
 | Copy `evals/` or `scripts/` into this skill dir | INTAKE quarantine |
 | Install the samber pack / marketplace sync | Dual routers; pin stays |
 
-Court host and account locks are **Never**, not Ask first.
+Host and personal-account locks are **Never**, not Ask first.
 
 ## Modes
 
@@ -98,11 +98,11 @@ Defense in depth: every layer still protects itself. A concat reachable only thr
 | Medium | 4–5.9 | Session / timing / defense weakening — next pass |
 | Low | 1–3.9 | Best-practice drift — opportunistic |
 
-Escalate Critical/High to Alex. Do not bury them in a follow-up with no Linear ID.
+Escalate Critical/High to the operator. Do not bury them in a follow-up with no ticket ID.
 
 ## STRIDE at the boundary
 
-For each crossing: spoofing (authn), tampering (integrity), repudiation (audit log), disclosure (encrypt / no PII logs), DoS (timeouts / rate limits), elevation (authz). Score with DREAD. Do not treat STRIDE as a substitute for the Argus LLD/PR gate.
+For each crossing: spoofing (authn), tampering (integrity), repudiation (audit log), disclosure (encrypt / no PII logs), DoS (timeouts / rate limits), elevation (authz). Score with DREAD. Do not treat STRIDE as a substitute for the **security** LLD/PR gate.
 
 ## Compact rules
 
@@ -116,7 +116,7 @@ For each crossing: spoofing (authn), tampering (integrity), repudiation (audit l
 
 **Logging.** Structured fields (`log/slog`). Never `%+v` a struct that holds a password or token.
 
-**Not this skill.** Nil panics, typed-nil interfaces, `append` aliasing → `golang-safety`. Table-driven tests, `t.Parallel`, fuzz harness → `golang-testing`. `govulncheck` / lockfile audit → Cedalion CI + dependency review, not an install step here.
+**Not this skill.** Nil panics, typed-nil interfaces, `append` aliasing → `golang-safety`. Table-driven tests, `t.Parallel`, fuzz harness → `golang-testing`. `govulncheck` / lockfile audit → **tester** CI + dependency review, not an install step here.
 
 ## Tooling (no skill scripts)
 
@@ -125,18 +125,18 @@ go test -race ./...
 go test -fuzz=Fuzz
 ```
 
-`gosec` / `govulncheck` belong in Cedalion hooks when Argus asks — do not `go install` them as this skill’s job and do not copy vendor installers.
+`gosec` / `govulncheck` belong in **tester** hooks when **security** asks — do not `go install` them as this skill’s job and do not copy vendor installers.
 
-## Court roles
+## Roles
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Argus** | This gate at LLD/PR for Go boundaries; skill intake | Writing product tests |
-| **Heph** | Implementing behind Always; pairing `golang-testing` / `golang-safety` | Self-excepting “just this query” |
-| **Cedalion** | `-race` / SAST hooks when they appear | Skipping Argus because CI is green |
-| **Themis** | After-act | Blessing a ship that skipped the gate |
+| **security** | This gate at LLD/PR for Go boundaries; skill intake | Writing product tests |
+| **builder** | Implementing behind Always; pairing `golang-testing` / `golang-safety` | Self-excepting “just this query” |
+| **tester** | `-race` / SAST hooks when they appear | Skipping **security** because CI is green |
+| **manager** | After-act | Blessing a ship that skipped the gate |
 
-Workers do not bypass. A green `gofmt` is not an Argus clear.
+Workers do not bypass. A green `gofmt` is not a **security** clear.
 
 ## Red flags
 
@@ -152,4 +152,4 @@ Stop. Classify. Ask or never — do not ship.
 
 ## Upstream pin
 
-Intent: samber/cc-skills-golang `skills/golang-security` @ `22c58a55a0a799b901aa251172923180bad9e010` (MIT). Body is court rewrite. See [SOURCES.md](../../SOURCES.md).
+Intent: samber/cc-skills-golang `skills/golang-security` @ `22c58a55a0a799b901aa251172923180bad9e010` (MIT). Body is a rewrite. See [SOURCES.md](../../SOURCES.md).

@@ -1,27 +1,34 @@
 # AGENTS
 
-This repository is the **Court shared skills home** (Alex private). It is not an application repo.
+This repository is a **shared skills home**. It is not an application
+repo.
 
-GitHub is the source of truth. Origin is inbound from GitHub ([codebase](https://cursor.com/codebase/alexderz/private-shared-skills)). Do not write skill bodies only on Origin.
+Git is the source of truth. Do not write skill bodies only on a local or
+vendor mirror.
 
-**Do not use the managed Superpowers plugin.** Court process skills live under `skills/<id>/` in this repo (or will after Argus remint). Prefer sand-workflow / installed court skills that twin these ids. Load court skills from this repo by id — never from Cursor managed Superpowers.
+**Do not use the managed Superpowers plugin.** Process skills live under
+`skills/<id>/` in this repo. Load skills from this repo by id — never
+from a managed Superpowers pack.
 
-## Skills are tools, keyed by pantheon role
+## Skills are tools, keyed by role
 
 | Role | Job |
 | --- | --- |
-| Heph | Architect and delivery |
-| Cedalion | Mechanical CI, hooks, cleanup |
-| Argus | Security gates and skill intake |
-| Themis | Court process and SDLC |
+| architect | Design, HLD/LLD, adversarial review of approach |
+| builder | Implement and ship |
+| tester | Mechanical CI, hooks, cleanup |
+| security | Security gates and skill intake |
+| manager | Process and SDLC after-act |
+| operator | HITL, exceptions, vuln severity |
 
-Pick the tool that matches the role. Improvise when the work needs it. Do not remint a skill that already has an id here.
+Pick the tool that matches the role. Improvise when the work needs it.
+Do not remint a skill that already has an id here.
 
 ## Inventory
 
-Authoritative table: [SOURCES.md](SOURCES.md).
+Authoritative table: [SOURCES.md](SOURCES.md). Bundles: [README.md](README.md).
 
-Skill ids with `SKILL.md` on `main` (do not remint #16–#20):
+Skill ids with `SKILL.md` (do not remint without a new **security** cut):
 
 - `tdd`
 - `verify-before-done`
@@ -34,7 +41,7 @@ Skill ids with `SKILL.md` on `main` (do not remint #16–#20):
 - `golang-safety`
 - `yagni`
 
-Language pack (this PR; Argus clear before merge). Do not remint the Go / Python / Shell court ids above.
+Language pack. Do not remint the Go / Python / Shell ids above.
 
 - `language-router`
 - `lang-go` (pointer → one of `golang-safety` / `golang-testing` / `golang-security`)
@@ -60,21 +67,27 @@ Language pack (this PR; Argus clear before merge). Do not remint the Go / Python
 - `lang-powershell`
 - `lang-protobuf`
 
-Court-owned placeholders / empty dirs (no body claim until SHA + `SKILL.md` on `main`):
+First-party placeholders / empty dirs (no body claim until SHA +
+`SKILL.md` on `main`):
 
-- `court-linear-sdlc`
+- `tracker-sdlc`
 - `cursor-cloud-agents-when`
 
-Load by id from this repo — never from managed Superpowers. Spector hygiene refine landed as PSS #20 (shell-safety FP soften + security-hardening AE1).
+Load by id from this repo — never from managed Superpowers.
 
 ## Language routing
 
-Load **at most one** language-family skill per turn. A second is allowed only for a truly mixed-language diff. Never load the catalog.
-`tdd` / `verify-before-done` / `pr-review` / `security-hardening` / `yagni` may load alongside.
+Load **at most one** language-family skill per turn. A second is allowed
+only for a truly mixed-language diff. Never load the catalog.
+`tdd` / `verify-before-done` / `pr-review` / `security-hardening` /
+`yagni` may load alongside.
 
-If `language-router` is installed and the table is ambiguous, load it first, then the one skill it names.
+If `language-router` is installed and the table is ambiguous, load it
+first, then the one skill it names.
 
-Pointer ids (`lang-go`, `lang-python`, `lang-shell`) exist so every identified language has a file. They do **not** count as a skill load. They route to the court ids below.
+Pointer ids (`lang-go`, `lang-python`, `lang-shell`) exist so every
+identified language has a file. They do **not** count as a skill load.
+They route to the ids below.
 
 | Files / signals | Load |
 | --- | --- |
@@ -101,25 +114,26 @@ Pointer ids (`lang-go`, `lang-python`, `lang-shell`) exist so every identified l
 | `*.proto` | `lang-protobuf` |
 | `*.lua` | `lang-lua` |
 
-Stubs (no skill body — official docs only): Elixir, Scala, Haskell, Zig, Solidity, Perl, Objective-C, R, Assembly.
+Stubs (no skill body — official docs only): Elixir, Scala, Haskell, Zig,
+Solidity, Perl, Objective-C, R, Assembly.
 
-Frameworks (React, Spring, Rails, FastAPI, Flutter) are **not** language skills. Do not invent one mid-session.
+Frameworks (React, Spring, Rails, FastAPI, Flutter) are **not** language
+skills. Do not invent one mid-session.
 
-## Intake (Argus)
+## Intake (security)
 
 Before any third-party content:
 
 1. Do **not** install Superpowers, Pocock, or Addy as a whole pack.
 2. Pin the cherry-pick SHA in [SOURCES.md](SOURCES.md).
-3. Complete Argus intake.
-4. No marketplace install, no auto-update, no scripts, no secrets in this repo.
+3. Complete **security** intake ([docs/INTAKE.md](docs/INTAKE.md)).
+4. No marketplace install, no auto-update, no scripts, no secrets in this
+   repo.
 
 Empty SHA cells mean the body must not exist yet.
 
 ## Related
 
 - README: [README.md](README.md)
-- Court SDLC (GitHub copy): [docs/COURT-SDLC.md](docs/COURT-SDLC.md)
-- Linear: [Upping our coding game](https://linear.app/derzhi-grok-bot/project/upping-our-coding-game-979b787dfbb9)
-- heph-forge companion: `projects/upping-coding-game/COURT-SDLC.md` (heph-forge#9)
-- Issue cut: [DER-46](https://linear.app/derzhi-grok-bot/issue/DER-46/stage-0-court-sdlc-skills-home-layout)
+- SDLC: [docs/SDLC.md](docs/SDLC.md)
+- Role mapping (transitional): [docs/ROLE-MAPPING.md](docs/ROLE-MAPPING.md)

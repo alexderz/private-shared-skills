@@ -5,7 +5,7 @@ description: use this when writing or reviewing *.proto files or generated stubs
 
 # Protocol Buffers
 
-Court-owned. Compatible with `tdd`, `verify-before-done`, `pr-review`,
+Compatible with `tdd`, `verify-before-done`, `pr-review`,
 `security-hardening`, `yagni`. No `scripts/`. May be the second skill
 next to the host language.
 

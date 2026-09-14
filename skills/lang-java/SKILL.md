@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Java — *.java, pom.x
 
 # Java
 
-Court-owned language guide. No Spring / Jakarta religion. Compatible with
+Language guide. No Spring / Jakarta religion. Compatible with
 `tdd`, `verify-before-done`, `pr-review`, `security-hardening`, `yagni`.
 No `scripts/`.
 

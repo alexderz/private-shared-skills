@@ -5,9 +5,9 @@ description: use this when about to claim work is complete, fixed, or passing �
 
 # Verify before done
 
-Court-owned rewrite inspired by Superpowers `verification-before-completion` (obra/superpowers @ `b36e0829`). **Not** a managed Superpowers plugin. **Not** a vendor paste. PSS id: `verify-before-done`.
+Rewrite inspired by Superpowers `verification-before-completion` (obra/superpowers @ `b36e0829`). **Not** a managed Superpowers plugin. **Not** a vendor paste. Id: `verify-before-done`.
 
-Pairs with court SDLC Stage 4: notify **landed+verified**, not “pushed” and not LGTM without evidence.
+Pairs with SDLC Stage 4: notify **landed+verified**, not “pushed” and not LGTM without evidence.
 
 ## Iron law
 
@@ -36,7 +36,7 @@ Skip a step = claiming, not verifying.
 | Red-green proof for new regression tests | HITL when evidence is ambiguous or flaky | Satisfaction (“Great!”, “Done!”) before evidence |
 | Line-by-line checklist for requirements DoD | Unsupervised push to protected / prod deploy / secret rotate | Extrapolating from linter to build, or build to product fix |
 
-**HITL (Spector EA2 / autonomous cmds):** run verification for evidence — bots oversee workers. Do **not** unsupervised destructive/irreversible actions (push to protected branches, prod deploy, secret rotate) without human/Alex. If Argus or CI marks a check flaky/MEDIUM, do not self-clear — show Alex/Argus the output and wait.
+**HITL:** run verification for evidence — bots oversee workers. Do **not** unsupervised destructive/irreversible actions (push to protected branches, prod deploy, secret rotate) without the operator. If **security** or CI marks a check flaky/MEDIUM, do not self-clear — show the operator the output and wait.
 
 ## Claim → evidence
 
@@ -50,21 +50,21 @@ Skip a step = claiming, not verifying.
 | Agent finished | Diff/PR shows the change | Agent said success |
 | Requirements met | Checklist against plan/ticket | Tests alone |
 
-## Court roles
+## Roles
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Heph** | Running this gate before ship claims | Skipping Argus on skill-home PRs |
-| **Cedalion** | CI that produces evidence | Claiming product DoD from fmt-only green |
-| **Argus** | Intake / PR security clear | Day-to-day verify coaching |
-| **Themis** | After-act landed+verified | Blessing without evidence |
+| **builder** | Running this gate before ship claims | Skipping **security** on skill-home PRs |
+| **tester** | CI that produces evidence | Claiming product DoD from fmt-only green |
+| **security** | Intake / PR security clear | Day-to-day verify coaching |
+| **manager** | After-act landed+verified | Blessing without evidence |
 
 ## Red flags
 
 - Wording that implies success without a command in this turn
 - “Just this once” / “I’m tired” / “agent said it’s fine”
 - Moving on because the diff “looks right”
-- Using managed Superpowers verify skill instead of this PSS id
+- Using managed Superpowers verify skill instead of this id
 
 Stop. Run the proof. Or say what is still unverified.
 

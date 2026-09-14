@@ -5,7 +5,7 @@ description: use this when writing or reviewing Dockerfiles, *.dockerfile, or co
 
 # Dockerfile
 
-Court-owned. Compatible with `tdd`, `verify-before-done`, `pr-review`,
+Compatible with `tdd`, `verify-before-done`, `pr-review`,
 `security-hardening`, `yagni`. No `scripts/`. Real `.sh` files still
 load `shell-safety`.
 

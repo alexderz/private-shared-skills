@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Rust — Cargo.toml, *
 
 # Rust
 
-Court-owned language guide. Distills what agents get wrong; not a paste of
+Language guide. Distills what agents get wrong; not a paste of
 the Microsoft Pragmatic Rust Guidelines or a 200-rule dump. Compatible
 with `tdd`, `verify-before-done`, `pr-review`, `security-hardening`,
 `yagni`. No `scripts/`.

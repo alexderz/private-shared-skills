@@ -5,9 +5,9 @@ description: use this when reviewing security, mapping trust boundaries, or hard
 
 # Security hardening
 
-Court-owned Always / Ask first / Never for Argus and the court SDLC. The table shape is inspired by Addy Osmani’s boundary pattern. This file is **not** a vendor copy and is not a marketplace pack.
+First-party Always / Ask first / Never for **security** and the SDLC. The table shape is inspired by Addy Osmani’s boundary pattern. This file is **not** a vendor copy and is not a marketplace pack.
 
-**Argus owns this gate** at LLD (trust boundaries) and at PR. Escalate vulns to Alex. Cedalion owns CI secret-scan and dependency-audit hooks — do not remint those jobs here.
+**security owns this gate** at LLD (trust boundaries) and at PR. Escalate vulns to the operator. **tester** owns CI secret-scan and dependency-audit hooks — do not remint those jobs here.
 
 ## Prompts are not a boundary
 
@@ -28,13 +28,13 @@ Validate at the boundary. Parameterize queries. Encode output. Use HTTPS. Hash p
 | Hash passwords (slow, salted, dedicated KDF) | Login and session issuance | Token/password credential stores | Agent-held user secrets: do not invent a store; escalate |
 | Security headers | CSP, HSTS, frame/referrer, nosniff as the app requires | Same on browser-facing responses | UI the agent emits still needs headers on the serving app |
 | Secure cookies | `Secure`, `HttpOnly`, `SameSite` on session cookies | Cookie and token issuance APIs | Do not put session material in prompts or chat logs |
-| Dependency audit before release | Lockfile + known-vuln scan in the release path | Same for API images and libs | Same for skill/tool packages; Cedalion owns the hook |
+| Dependency audit before release | Lockfile + known-vuln scan in the release path | Same for API images and libs | Same for skill/tool packages; **tester** owns the hook |
 
-If a change touches a boundary and skips a row, it fails the Argus LLD/PR gate.
+If a change touches a boundary and skips a row, it fails the **security** LLD/PR gate.
 
 ## Ask first
 
-Stop and get a decision (Alex, or Argus on the LLD) before adding or widening any of these.
+Stop and get a decision (the operator, or **security** on the LLD) before adding or widening any of these.
 
 | Topic | Why it is a stop | Typical surfaces |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ Stop and get a decision (Alex, or Argus on the LLD) before adding or widening an
 | Mesh / network binds | Who can reach the process is a trust boundary | Listen address, mesh expose, tunnel |
 | Identity flows | Account linking, impersonation, and reset change who a principal is | SSO, invite, sudo, token exchange |
 
-“Ask first” means do not implement the widening in the same pass as an unrelated ticket. Record the decision on the LLD or Linear issue.
+“Ask first” means do not implement the widening in the same pass as an unrelated ticket. Record the decision on the LLD or ticket.
 
 ## Never
 
@@ -60,30 +60,30 @@ Stop and get a decision (Alex, or Argus on the LLD) before adding or widening an
 | Sessions in `localStorage` | XSS reads it | Prefer httpOnly cookies; do not stash session JWTs in web storage |
 | Stack traces to clients | Layout and secrets leak | Prod 500 bodies, agent error relays to untrusted chat |
 | Public mesh / `0.0.0.0` binds | The network becomes the client | Dev servers, dashboards, agent runtimes on a public interface |
-| Windows (**Alex-pc4**) without Alex approval | Court host lock | Do not target, remote, or “just use” Alex-pc4 |
-| Bank / Gmail / LastPass access | Out of agent scope | No fetch, scrape, MCP, or “help me log in” |
+| Extra hosts / Windows outside the workspace without operator approval | Host lock | Do not target, remote, or “just use” a personal machine |
+| Personal finance, mail, or password-manager access | Out of agent scope | No fetch, scrape, MCP, or “help me log in” |
 
-Court host and account locks are **Never**, not Ask first. There is no “supervised exception” in this skill.
+Host and personal-account locks are **Never**, not Ask first. There is no “supervised exception” in this skill.
 
-## Court roles
+## Roles
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Argus** | This gate at **LLD (trust boundaries)** and **PR**; skill intake (repo path `docs/INTAKE.md`) | Monthly vuln cadence (Stage 8 is not this gate) |
-| **Alex** | Vuln severity calls, Alex-pc4, bank/Gmail/LastPass, exceptions | Day-to-day intake scans |
-| **Cedalion** | CI secret-scan and dependency-audit **hooks** | Rewriting this skill or skipping Argus because CI is green |
-| **Heph / implementer** | Building behind the gate | Self-review as the Argus PR gate (fresh-context review) |
-| **Themis** | SDLC after-act | Blessing a ship that skipped Argus |
+| **security** | This gate at **LLD (trust boundaries)** and **PR**; skill intake (repo path `docs/INTAKE.md`) | Monthly vuln cadence (Stage 8 is not this gate) |
+| **operator** | Vuln severity calls, extra hosts, personal-account exceptions | Day-to-day intake scans |
+| **tester** | CI secret-scan and dependency-audit **hooks** | Rewriting this skill or skipping **security** because CI is green |
+| **builder** | Building behind the gate | Self-review as the **security** PR gate (fresh-context review) |
+| **manager** | SDLC after-act | Blessing a ship that skipped **security** |
 
-Escalate vulns to Alex. Do not bury them in a “follow-up” with no Linear ID.
+Escalate vulns to the operator. Do not bury them in a “follow-up” with no ticket ID.
 
-Workers (Cloud Agent, grok CLI, Origin) **do not bypass** this gate. A green CI hook is not an Argus clear.
+Workers (remote agents, local CLIs, mirrors) **do not bypass** this gate. A green CI hook is not a **security** clear.
 
-## eduardo-sl discipline
+## Review-skill discipline
 
 Least privilege. **Review skills should not write.**
 
-A skill that reviews, intakes, audits, or hardens must not grow write, deploy, or credential tools “to finish the review.” Read, report, escalate. If the work needs a write, that is a different skill and a different Argus ask.
+A skill that reviews, intakes, audits, or hardens must not grow write, deploy, or credential tools “to finish the review.” Read, report, escalate. If the work needs a write, that is a different skill and a different **security** ask.
 
 Same rule for this file: it is a gate, not a pentest kit, not a credentials broker, and not a reason to open bank, mail, or password stores.
 
@@ -95,7 +95,7 @@ Same rule for this file: it is a gate, not a pentest kit, not a credentials brok
 - “It is only bound on `0.0.0.0` in dev”
 - “I will audit dependencies after release”
 - “Review will just fix the YAML / merge / rotate”
-- “Alex-pc4 is convenient”
-- “I need LastPass / Gmail / the bank to verify”
+- “The extra host is convenient”
+- “I need the password manager / mail / bank to verify”
 
 All of these fail the gate. Stop. Ask or never — do not ship.

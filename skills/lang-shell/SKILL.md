@@ -1,9 +1,9 @@
 ---
 name: lang-shell
-description: use this when the change is shell or bash and you need the court pointer — routes to shell-safety. do not use as a second shell body. do not use for PowerShell (load lang-powershell) or Docker RUN trivia (load lang-docker first).
+description: use this when the change is shell or bash and you need the pointer — routes to shell-safety. do not use as a second shell body. do not use for PowerShell (load lang-powershell) or Docker RUN trivia (load lang-docker first).
 ---
 
-# Shell (router to court id)
+# Shell (router)
 
 **This id routes.** Load `shell-safety`. Do not remint Always / Ask first /
 Never for bash. Compatible with `security-hardening`, `tdd`,

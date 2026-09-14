@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Dart — *.dart, pubsp
 
 # Dart
 
-Court-owned. Language, not a Flutter pack. Compatible with `tdd`,
+Language, not a Flutter pack. Compatible with `tdd`,
 `verify-before-done`, `pr-review`, `security-hardening`, `yagni`. No
 `scripts/`.
 

@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing C++ — *.cpp, *.cc, *
 
 # C++
 
-Court-owned. RAII and ownership, not a Core Guidelines dump. Compatible
+RAII and ownership, not a Core Guidelines dump. Compatible
 with `tdd`, `verify-before-done`, `pr-review`, `security-hardening`,
 `yagni`. No `scripts/`.
 

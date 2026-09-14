@@ -5,9 +5,9 @@ description: use this when implementing a feature or bugfix, changing behavior, 
 
 # Test-driven development
 
-Court rewrite inspired by Superpowers TDD (`obra/superpowers` `skills/test-driven-development` @ `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`). This file is **not** a verbatim paste, **not** a managed Superpowers plugin, and **not** a pack install. PSS `skills/tdd/` is the skill home.
+Rewrite inspired by Superpowers TDD (`obra/superpowers` `skills/test-driven-development` @ `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`). This file is **not** a verbatim paste, **not** a managed Superpowers plugin, and **not** a pack install. `skills/tdd/` is the skill home.
 
-**Argus owns intake.** SkillSpector 0 on this remint. Do not install Superpowers as a plugin or marketplace pack to get TDD.
+**security owns intake.** Do not install Superpowers as a plugin or marketplace pack to get TDD.
 
 ## The iron law
 
@@ -17,7 +17,7 @@ Wrote code first? Delete it. Restart from a failing test. Do not keep it as refe
 
 ## Ask first
 
-Stop and ask Alex (or the pairing human) before skipping the cycle for:
+Stop and ask the operator (or the pairing human) before skipping the cycle for:
 
 | Topic | Why it is a stop |
 | --- | --- |

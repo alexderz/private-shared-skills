@@ -5,7 +5,7 @@ description: use this when scoping a change, adding a helper, or expanding a ski
 
 # YAGNI
 
-Court restraint. Prefer the smallest change that meets **this** Task. Compatible with `tdd` and `verify-before-done`: do not build for imagined tomorrow.
+Restraint. Prefer the smallest change that meets **this** Task. Compatible with `tdd` and `verify-before-done`: do not build for imagined tomorrow.
 
 **Not** a Superpowers/Pocock/Addy pack. No `scripts/`.
 
@@ -17,7 +17,7 @@ Court restraint. Prefer the smallest change that meets **this** Task. Compatible
 
 - Prefer one focused PR (~≤300–400 lines, one idea).
 - Delete or skip dead code paths you are replacing — do not leave dual routers.
-- Reuse an existing court skill id before inventing a parallel procedure.
+- Reuse an existing skill id before inventing a parallel procedure.
 - Keep AGENTS.md thin (ids + repo rules); put procedures in skills.
 
 ## Ask first
@@ -25,14 +25,14 @@ Court restraint. Prefer the smallest change that meets **this** Task. Compatible
 - New abstraction “for later reuse” with no second caller yet.
 - New config flag / feature toggle with no current consumer.
 - Expanding a skill past ~250 lines or adding `scripts/` to a skill dir.
-- Second toolkit that overlaps an installed PSS id (dual router risk).
+- Second toolkit that overlaps an installed skill id (dual router risk).
 
 ## Never
 
 - Install Superpowers / Pocock / Addy whole for restraint or process.
-- Remint a MERGED skill body without a new Argus cut.
-- Add marketplace installers or auto-update upstream into court skills.
-- Bank / Gmail / LastPass / Alex-pc4 via “just in case” helpers.
+- Remint a MERGED skill body without a new **security** cut.
+- Add marketplace installers or auto-update upstream into skills.
+- Personal finance, mail, password stores, or extra hosts via “just in case” helpers.
 
 ## Red flags
 

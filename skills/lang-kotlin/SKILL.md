@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Kotlin — *.kt, *.kts
 
 # Kotlin
 
-Court-owned. Null safety and coroutines, not a framework pack. Compatible
+Null safety and coroutines, not a framework pack. Compatible
 with `tdd`, `verify-before-done`, `pr-review`, `security-hardening`,
 `yagni`. No `scripts/`.
 

@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing Lua — *.lua includin
 
 # Lua
 
-Court-owned thin-but-complete guide. You actually write Lua. Compatible
+Thin-but-complete guide. You actually write Lua. Compatible
 with `tdd`, `verify-before-done`, `pr-review`, `security-hardening`,
 `yagni`. No `scripts/`.
 

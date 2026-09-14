@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing PHP — *.php, compose
 
 # PHP
 
-Court-owned. PHP 8+ types. Compatible with `tdd`, `verify-before-done`,
+PHP 8+ types. Compatible with `tdd`, `verify-before-done`,
 `pr-review`, `security-hardening`, `yagni`. No `scripts/`.
 
 ## Iron law

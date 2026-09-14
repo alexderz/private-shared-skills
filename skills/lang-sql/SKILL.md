@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or migrating SQL — *.sql, schem
 
 # SQL
 
-Court-owned. Parameterize or do not ship. Compatible with `tdd`,
+Parameterize or do not ship. Compatible with `tdd`,
 `verify-before-done`, `pr-review`, `security-hardening`, `yagni`, and
 the host language skill. No `scripts/`.
 

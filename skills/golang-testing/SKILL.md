@@ -5,9 +5,9 @@ description: use this when writing, reviewing, or debugging Go tests — table-d
 
 # Go testing
 
-Court rewrite inspired by samber/cc-skills-golang `golang-testing` @ `22c58a55a0a799b901aa251172923180bad9e010`. **Not** a verbatim paste. **Not** a pack install. No `evals/`, no `scripts/`, no clawhub. PSS id: `golang-testing`.
+Rewrite inspired by samber/cc-skills-golang `golang-testing` @ `22c58a55a0a799b901aa251172923180bad9e010`. **Not** a verbatim paste. **Not** a pack install. No `evals/`, no `scripts/`, no clawhub. Id: `golang-testing`.
 
-Pairs with court `tdd` (fail-first) and `verify-before-done` (fresh `go test` evidence). **Heph owns.** Do not install Superpowers / Pocock / Addy — or the rest of the samber pack — to get this.
+Pairs with `tdd` (fail-first) and `verify-before-done` (fresh `go test` evidence). **builder owns.** Do not install Superpowers / Pocock / Addy — or the rest of the samber pack — to get this.
 
 ## Iron law
 
@@ -31,7 +31,7 @@ Each case is independently runnable, named, and attributed to its own `*testing.
 | Mock interfaces defined at the consumer | Concrete mocks lock the wrong type |
 | testify as helpers on top of `testing` | It is not a replacement for the stdlib |
 | `ExampleXxx` with `// Output:` for public API | Drifting docs fail the build |
-| Fresh `go test` evidence before claiming green | Court `verify-before-done` |
+| Fresh `go test` evidence before claiming green | `verify-before-done` |
 
 ## Ask first
 
@@ -39,7 +39,7 @@ Each case is independently runnable, named, and attributed to its own `*testing.
 | --- | --- |
 | White-box (`package foo`) vs black-box (`package foo_test`) | Unexported access is a design choice, not a default |
 | Skipping `t.Parallel()` on a large independent suite | Say why (shared mutable fixture, global env) |
-| Adding testify / mock codegen the module does not already use | New test dep is a court dep |
+| Adding testify / mock codegen the module does not already use | New test dep is a project dep |
 | `go install github.com/cweill/gotests/gotests@latest` | Unpinned installer; INTAKE: no skill scripts |
 | Integration tests without a build tag | They hitch a ride on every unit run |
 | Ignoring known goroutines in goleak | `IgnoreCurrent` hides leaks — name them |
@@ -58,14 +58,14 @@ Do not self-except. Record the choice.
 | `synctest.Run` in Go 1.25+ code | That API is the 1.24 experiment; use `synctest.Test` |
 | Silencing `stdversion` (Go 1.27+ default vet) | Bump the `go` directive or stop using the newer API |
 | Writing artifacts into the repo from a test | Go 1.26+ `t.ArtifactDir()` (also `B` / `F`) |
-| Installing the samber pack, clawhub, or Superpowers/Pocock/Addy | Dual routers; Argus CLEAR is SKILL-only |
+| Installing the samber pack, clawhub, or Superpowers/Pocock/Addy | Dual routers; **security** CLEAR is SKILL-only |
 | Copying `evals/`, `EVALUATIONS.md`, `clawhub-publish.sh`, or `scripts/` | Quarantined by intake |
 
 ## Modes (one pass)
 
 | Mode | Do |
 | --- | --- |
-| **Write** | One behavior at a time. Table + named `t.Run`. Edges and error paths. Court `tdd` still applies. |
+| **Write** | One behavior at a time. Table + named `t.Run`. Edges and error paths. `tdd` still applies. |
 | **Review** | Diff only: new behavior covered, assertions on the contract, no flake patterns, no assert-scope leak. |
 | **Audit** | Three concerns, then one report: (1) unit quality / gaps, (2) integration isolation / tags, (3) leaks / races. |
 | **Debug** | Reproduce, isolate the assertion, then the production or setup cause. Do not “fix” a flake with sleep. |
@@ -145,7 +145,7 @@ Seed with `f.Add`, then assert an invariant (round-trip, parse/format). `Example
 
 Coverage: `go test -coverprofile=coverage.out ./...` then `go tool cover -html=coverage.out`. Read uncovered lines. Do not treat the number as DoD.
 
-Linters that catch this skill’s rules: `thelper`, `paralleltest`, `testifylint`. Cedalion owns hook wiring — do not remint CI here.
+Linters that catch this skill’s rules: `thelper`, `paralleltest`, `testifylint`. **tester** owns hook wiring — do not remint CI here.
 
 ## Commands
 
@@ -159,16 +159,16 @@ go test -fuzz=FuzzName ./...
 go test -bench=. -benchmem ./...
 ```
 
-## Court roles
+## Roles
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Heph** | This skill; Go test shape in product repos | Installing the samber pack |
-| **Cedalion** | `gofmt` / race / lint hooks when `.go` appears | Claiming product DoD from fmt-only green |
-| **Argus** | Intake; CLEAR conditions (SKILL only) | Day-to-day testify coaching |
-| **Themis** | After-act landed+verified | Blessing a suite that skipped `tdd` / verify |
+| **builder** | This skill; Go test shape in product repos | Installing the samber pack |
+| **tester** | `gofmt` / race / lint hooks when `.go` appears | Claiming product DoD from fmt-only green |
+| **security** | Intake; CLEAR conditions (SKILL only) | Day-to-day testify coaching |
+| **manager** | After-act landed+verified | Blessing a suite that skipped `tdd` / verify |
 
-Workers do not bypass intake. A green `go test` is not an Argus clear of this skill home.
+Workers do not bypass intake. A green `go test` is not a **security** clear of this skill home.
 
 ## Red flags
 
@@ -183,4 +183,4 @@ Stop. Name the case. Assert the contract. Run fresh evidence.
 
 ## Upstream pin
 
-samber/cc-skills-golang `skills/golang-testing` @ `22c58a55a0a799b901aa251172923180bad9e010` (MIT). Body is a court compress of `SKILL.md` only. See [SOURCES.md](../../SOURCES.md).
+samber/cc-skills-golang `skills/golang-testing` @ `22c58a55a0a799b901aa251172923180bad9e010` (MIT). Body is a compress of `SKILL.md` only. See [SOURCES.md](../../SOURCES.md).

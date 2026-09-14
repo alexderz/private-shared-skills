@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or testing C — *.c, *.h without
 
 # C
 
-Court-owned. CERT-shaped, not a CERT paste. Compatible with `tdd`,
+CERT-shaped, not a CERT paste. Compatible with `tdd`,
 `verify-before-done`, `pr-review`, `security-hardening`, `yagni`. No
 `scripts/`.
 

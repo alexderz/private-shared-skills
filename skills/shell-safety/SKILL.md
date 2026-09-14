@@ -5,7 +5,7 @@ description: use this when writing, reviewing, or running shell or bash — incl
 
 # Shell safety
 
-Court-owned Always / Ask first / Never for Cedalion and Argus. Compatible with `security-hardening`: **LLM output is untrusted**; encode for the shell sink; the system prompt is not a boundary.
+First-party Always / Ask first / Never for **tester** and **security**. Compatible with `security-hardening`: **LLM output is untrusted**; encode for the shell sink; the system prompt is not a boundary.
 
 Process pin: Superpowers `using-superpowers` @ `b36e0829` — if this skill applies, use it; do not rationalize past the gate. **Not** a Superpowers plugin. **Not** a vendor paste. No `scripts/` in this skill dir.
 
@@ -29,7 +29,7 @@ Model-chosen commands, generated scripts, and `$(...)` from untrusted text are c
 | `[[ ]]` tests; `printf` not `echo` for untrusted text | `[` and `echo` are footguns |
 | `mktemp` plus `trap` cleanup | Predictable temps; no `/tmp/foo` races |
 | `cd -- "$dir" \|\| exit` | Failed cd must not continue |
-| ShellCheck on committed scripts (Cedalion) | Static catch before CI |
+| ShellCheck on committed scripts (**tester**) | Static catch before CI |
 | Allowlist / encode before model text reaches a shell | Same as security-hardening encode-for-sink |
 | Workspace-scoped paths; non-interactive flags | Agents must not hang or roam |
 
@@ -56,25 +56,25 @@ Record the decision. Do not self-except.
 | Pipe unpinned remote script into a shell | Supply chain |
 | Recursive force-remove of filesystem root or unguarded variable paths; unquoted destructive globs | Host wipe |
 | Secrets in scripts, git, or command lines that will be logged | History is forever |
-| Install Superpowers / Pocock / Addy packs for this skill | Dual routers; Alex removed the plugin |
-| Copy `scripts/` into a court skill dir | INTAKE quarantine |
-| Alex-pc4 / Windows without Alex approval | Host lock |
-| Bank / Gmail / LastPass via shell | Out of agent scope |
+| Install Superpowers / Pocock / Addy packs for this skill | Dual routers |
+| Copy `scripts/` into a skill dir | INTAKE quarantine |
+| Extra hosts / Windows outside the workspace without operator approval | Host lock |
+| Personal finance, mail, or password-manager via shell | Out of agent scope |
 | Bind all interfaces or public mesh from a one-liner | Network becomes the client |
 | World-writable mode bits on secrets | Data-class fail |
 
-Court host and account locks are **Never**, not Ask first.
+Host and personal-account locks are **Never**, not Ask first.
 
-## Court roles
+## Roles
 
 | Role | Owns | Does not own |
 | --- | --- | --- |
-| **Argus** | This gate at LLD/PR when shell touches a boundary; skill intake | Writing Cedalion CI yaml |
-| **Cedalion** | shellcheck hooks when `.sh` appears | Skipping Argus because CI is green |
-| **Heph** | Classifying commands before they run | Self-excepting “just this once” |
-| **Themis** | After-act | Blessing a ship that skipped the gate |
+| **security** | This gate at LLD/PR when shell touches a boundary; skill intake | Writing tester CI yaml |
+| **tester** | shellcheck hooks when `.sh` appears | Skipping **security** because CI is green |
+| **builder** | Classifying commands before they run | Self-excepting “just this once” |
+| **manager** | After-act | Blessing a ship that skipped the gate |
 
-Workers do not bypass. A green ShellCheck is not an Argus clear.
+Workers do not bypass. A green ShellCheck is not a **security** clear.
 
 ## Red flags
 
@@ -83,10 +83,10 @@ Workers do not bypass. A green ShellCheck is not an Argus clear.
 - “Elevated shell is faster than asking”
 - “Empty path is fine”
 - “Install the Superpowers plugin to get shell safety”
-- “Alex-pc4 is convenient”
+- “The extra host is convenient”
 
 Stop. Classify. Ask or never — do not run.
 
 ## Upstream pin
 
-Intent: obra/superpowers `using-superpowers` @ `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`. Body is court-owned. See [SOURCES.md](../../SOURCES.md).
+Intent: obra/superpowers `using-superpowers` @ `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`. Body is first-party. See [SOURCES.md](../../SOURCES.md).
