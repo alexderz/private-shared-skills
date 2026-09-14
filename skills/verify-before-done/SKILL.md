@@ -7,7 +7,8 @@ description: use this when about to claim work is complete, fixed, or passing �
 
 Rewrite inspired by Superpowers `verification-before-completion` (obra/superpowers @ `b36e0829`). **Not** a managed Superpowers plugin. **Not** a vendor paste. Id: `verify-before-done`.
 
-Pairs with SDLC Stage 4: notify **landed+verified**, not “pushed” and not LGTM without evidence.
+Pairs with SDLC Stage 4: notify **landed+verified** on **project-main**,
+not “pushed to an item branch” and not LGTM without evidence.
 
 The **proving command** is always re-run. The **verifier subagent** is
 not: first verify of a work item is a clean verifier; later verifies of
@@ -52,7 +53,7 @@ Skip a step = claiming, not verifying.
 | Build succeeds | Build exit 0 | Linter green |
 | Bug fixed | Symptom repro now passes | Code changed |
 | Regression test works | Fail without fix, pass with fix | Passes once |
-| Agent finished | Diff/PR shows the change | Agent said success |
+| Agent finished | Diff on project-main (or the land PR) shows the change | Agent said success; item branch only |
 | Requirements met | Checklist against plan/ticket | Tests alone |
 
 ## Roles
@@ -70,6 +71,7 @@ Skip a step = claiming, not verifying.
 - “Just this once” / “I’m tired” / “agent said it’s fine”
 - Moving on because the diff “looks right”
 - Using the builder as the verifier, or minting a new verifier every loop
+- Calling the item landed when it only exists on an item branch
 - Using managed Superpowers verify skill instead of this id
 
 Stop. Run the proof. Or say what is still unverified.

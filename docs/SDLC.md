@@ -15,7 +15,7 @@ Do not remint a skill that already has an id here.
 | **builder** | Implement and ship |
 | **tester** | Mechanical CI, hooks, cleanup, verification evidence |
 | **security** | Gates at LLD (trust boundaries) and PR, plus skill intake — not only a monthly vuln pass |
-| **manager** | Process and board after-act. Does not bless ships |
+| **manager** | Process, board after-act, and land path (PR vs merge-and-delete). Does not bless ships |
 | **operator** | Human in the loop: exceptions, vuln severity, extra hosts, personal accounts |
 
 Workers (coding agents, CI bots) act as **builder** or **tester**. They
@@ -65,9 +65,12 @@ not skip to Stage 4 without it when the change touches a boundary.
 
 ### Stage 3 Groom
 
-Break into Tasks/Bugs with acceptance criteria and an LLD link.
+Break into Tasks/Bugs with acceptance criteria and an LLD link. Name the
+**project-main** branch for this chunk (see [Project-main](#project-main-intermediate-integration)).
+**manager** sets the land path for the chunk: PR into project-main, or
+merge-and-delete the item branch.
 
-### Stage 4 — loop until DoD
+### Stage 4 — loop until merge-ready
 
 Implement and test at max safe parallelism. **Do not exit Stage 4 after
 one pass.** Loop implement → test → fix until the ticket Definition of
@@ -75,36 +78,47 @@ Done is actually met. Use **one builder subagent and one verifier
 subagent per work item** for that loop (see [Subagents per work
 item](#subagents-per-work-item)).
 
-DoD includes: acceptance on the ticket, tests/verification evidence, PR
-cites a ticket ID when the project uses tickets, no silent scope leftover.
-Notify **landed+verified** — not “pushed” and not “LGTM without evidence.”
+Each item **branches off project-main**, not off a pile of sibling
+item branches. Independent items may **build** in parallel. When an item
+is merge-ready (DoD + Stage 5), **land it on project-main** — do not
+stockpile finished-but-unmerged branches for a batch integrate. Lands
+are one at a time.
+
+DoD includes: acceptance on the ticket, tests/verification evidence,
+land path cites a ticket ID when the project uses tickets, no silent
+scope leftover. Notify **landed+verified** on **project-main** — not
+“pushed to an item branch” and not “LGTM without evidence.”
 
 **Skill-home DoD (this repo):** any skill-body diff must match the pinned
 SHA in [SOURCES.md](../SOURCES.md) for that id. Empty SHA means no body
 may land. Remote agent PRs into this repo still pass **security intake**.
 Workers **do not bypass** intake, SHA pins, or security LLD/PR gates.
 
-### Stage 5 Review gate (before integrate)
+### Stage 5 Review gate (before land on project-main)
 
-Review **before** Stage 6 integrate. The reviewer is **not** the builder
-who wrote the diff. Same-session self-review does not count.
+Review **before** the item lands on project-main. The reviewer is **not**
+the builder who wrote the diff. Same-session self-review does not count.
+Merge-and-delete does **not** skip this gate.
 
-First review of this PR: mint a **clean reviewer**. Later review rounds
-on the same PR (after fixes): **resume that reviewer**. Do not mint a
+First review of this item: mint a **clean reviewer**. Later review rounds
+on the same item (after fixes): **resume that reviewer**. Do not mint a
 new reviewer each round, and do not feed it the builder’s transcript.
 
-Reviewer approves only if the PR meets the ticket + LLD **and** the
-**security** PR gate (intake, SHA pins, trust-boundary deltas). Security
-at PR is a gate, not deferred to Stage 8 monthly.
+Reviewer approves only if the item meets the ticket + LLD **and** the
+**security** gate (intake, SHA pins, trust-boundary deltas). Security at
+land is a gate, not deferred to Stage 8 monthly. Diff range is versus
+**project-main**, not versus trunk.
 
-### Stage 6 Integration
+### Stage 6 — land project-main on trunk
 
-Only after Stage 5 review (clean reviewer, not the builder). More Tasks,
-not a special ceremony.
+After the chunk’s items are on project-main, merge project-main to the
+repo’s protected default (**trunk**, usually `main`). That is the
+coherent integrate. CHANGELOG may wait for Stage 7. Delete project-main
+after it is on trunk (or if **manager** cancels the chunk).
 
 ### Stage 7 Release
 
-Coherent chunk. CHANGELOG in the repo.
+Coherent chunk on trunk. CHANGELOG in the repo.
 
 ### Stage 8 Monthly
 
@@ -114,6 +128,53 @@ Vuln / updates / new solutions review. Recurrence note only until
 Monthly is **not** the security gate. **security** already gated trust
 boundaries at LLD and the PR. Monthly is cadence review of
 vulns/updates/new solutions, not a substitute for those gates.
+
+## Project-main (intermediate integration)
+
+Do not build a stack of isolated item branches and integrate them once
+at the end. Integrate **each** merge-ready item onto a temporary
+project branch, then land that branch on trunk as the chunk.
+
+| Branch | What | Lifetime |
+| --- | --- | --- |
+| **trunk** | Repo default (`main` / protected). Release target. | Permanent |
+| **project-main** | Integration branch for this project or chunk. Tip is the latest landed items. | Stage 3 → Stage 6 |
+| **item branch** | One work item. Created from current project-main. | Until that item lands |
+
+Name project-main `integrate/<project-or-chunk-slug>` unless the repo
+already has a convention. Create it from trunk at Stage 3. Builders
+**branch off the current project-main tip.** After an item lands, in-flight
+builders rebase or merge project-main and resume; the verifier re-runs.
+
+**Lands on project-main are serialized.** Builds may run in parallel;
+only one item merges at a time. The landing builder de-conflicts against
+the current project-main tip (resume that builder; then resume its
+verifier). Do not race two merges onto project-main.
+
+### Land path (manager)
+
+**manager** chooses, and may change when parallelism changes:
+
+| Situation | Default |
+| --- | --- |
+| Two or more items in flight on this project-main | **PR** into project-main (queue is visible; conflicts show on the PR) |
+| One item at a time | **Merge and delete** the item branch after Stage 5 |
+
+PRs are allowed and useful. They are not mandatory when manager has
+chosen merge-and-delete. Builders follow the current manager call; they
+do not pick a path that contradicts it. Ticket ID goes on the PR or the
+merge commit.
+
+**Never**
+
+- Branch an item off trunk or off another item branch while project-main
+  exists.
+- Leave merge-ready items unmerged so they can “integrate together later.”
+- Skip Stage 5 because the land path is merge-and-delete.
+- Force-push project-main to win a race (shared branch; **shell-safety**
+  Ask first).
+- Treat a green item branch as landed+verified. Landed means **on
+  project-main**.
 
 ## Subagents per work item
 
@@ -126,7 +187,7 @@ Those three must not be the same agent.
 | --- | --- | --- |
 | **builder** | Mint a **clean** subagent. Store `builder_id`. | **Resume** `builder_id`. Prompt only the delta. |
 | **verifier** | Mint a **clean** subagent. Never the builder. Store `verifier_id`. | **Resume** `verifier_id`. Prompt only the delta. Re-run proving commands. |
-| **reviewer** (Stage 5) | Mint a **clean** subagent. Never the builder. Store `reviewer_id`. | **Resume** `reviewer_id` for re-review of the same PR. |
+| **reviewer** (Stage 5) | Mint a **clean** subagent. Never the builder. Store `reviewer_id`. | **Resume** `reviewer_id` for re-review of the same item. |
 
 **Clean** means an empty transcript except the crafted task: ticket /
 LLD / acceptance, paths, and standards. Do not seed it with another
@@ -195,7 +256,7 @@ No auto-update.
 | `tracker-sdlc` | manager / architect | Empty dir until a first-party body |
 | `cursor-cloud-agents-when` | architect | Empty dir until a first-party body |
 | `tdd` | builder | Fail-first |
-| `pr-review` | architect / security | Reviewer ≠ builder; resume reviewer on later rounds; Standards vs Spec |
+| `pr-review` | architect / security | Reviewer ≠ builder; vs project-main; resume later rounds; Standards vs Spec |
 | `security-hardening` | security | Always / Ask first / Never |
 | `shell-safety` | security / tester | Classify before a command runs |
 | `verify-before-done` | builder / tester | Stage 4 / notify landed+verified; resume verifier |

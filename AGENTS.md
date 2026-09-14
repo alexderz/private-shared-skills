@@ -18,7 +18,7 @@ from a managed Superpowers pack.
 | builder | Implement and ship |
 | tester | Mechanical CI, hooks, cleanup |
 | security | Security gates and skill intake |
-| manager | Process and SDLC after-act |
+| manager | Process, SDLC after-act, land path (PR vs merge-and-delete) |
 | operator | HITL, exceptions, vuln severity |
 
 Pick the tool that matches the role. Improvise when the work needs it.
@@ -26,8 +26,13 @@ Do not remint a skill that already has an id here.
 
 Per work item: mint a **clean builder** and a **clean verifier** on the
 first pass; **resume** those subagents for later builds and verifies of
-the same item. Do not reuse the builder as the verifier. Full rule:
-[docs/SDLC.md](docs/SDLC.md) (Subagents per work item).
+the same item. Do not reuse the builder as the verifier.
+
+Branch items off **project-main** (`integrate/<slug>`), land each
+merge-ready item there (serialized), then land project-main on trunk.
+**manager** picks PR vs merge-and-delete from how many items are in
+flight. Full rules: [docs/SDLC.md](docs/SDLC.md) (Project-main,
+Subagents per work item).
 
 ## Inventory
 

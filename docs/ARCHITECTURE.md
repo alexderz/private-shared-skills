@@ -16,9 +16,10 @@ SHA-pinned, intake-scanned, and loadable by id.
    paste).
 3. Role split: architect design, builder ship, tester CI, security
    intake/gates, manager board.
-4. Stage −1 → 0 → … → 7 with **Stage 4 as a loop** until DoD; notify
-   landed+verified. One clean builder and one clean verifier per work
-   item; later loops **resume** those subagents.
+4. Stage −1 → 0 → … → 7 with **Stage 4 as a loop** until each item is
+   merge-ready. Land each item on **project-main** as it finishes; land
+   project-main on trunk at Stage 6. One clean builder and one clean
+   verifier per work item; later loops **resume** those subagents.
 
 ## Non-goals
 
@@ -57,7 +58,7 @@ flowchart LR
 | builder | Implement behind Always |
 | tester | fmt/lint/CI green, PR watch |
 | security | Intake, Always/Ask/Never, scanners |
-| manager | After-act; does not bless ships |
+| manager | After-act; land path; does not bless ships |
 | operator | HITL, vuln severity, extra-host exceptions |
 
 ## Risks
