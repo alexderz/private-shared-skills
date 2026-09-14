@@ -19,7 +19,9 @@ SHA-pinned, intake-scanned, and loadable by id.
 4. Stage −1 → 0 → … → 7 with **Stage 4 as a loop** until each item is
    merge-ready. Land each item on **project-main** as it finishes; land
    project-main on trunk at Stage 6. One clean builder and one clean
-   verifier per work item; later loops **resume** those subagents.
+   verifier per work item; later loops **resume** those subagents. On
+   mint, pack or point the prompt for token cost; do not re-pack on
+   resume.
 
 ## Non-goals
 

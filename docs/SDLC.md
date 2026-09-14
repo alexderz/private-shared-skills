@@ -219,6 +219,38 @@ rotate roles to “save” context.
 Orchestrators that spawn in parallel still mint **one pair per item**,
 not one pair per loop. Independent items get independent pairs.
 
+### Spawn prompts (pack vs point)
+
+On each **mint**, the orchestrator (**manager**) picks the cheaper prompt
+for that child. There is no default that is always right.
+
+| Mode | Prompt | Child does |
+| --- | --- | --- |
+| **Pack** | Comprehensive: ticket/LLD, the skill bodies it will need, and any MCP tool schemas it will call. Name the ids packed. Tell it **not** to reload those. | Work. Do not `read_file` the packed skills or re-fetch packed MCP schemas. |
+| **Point** | High-level task + which skill ids / MCP servers to load (or the host default: “read the matching `SKILL.md`”). | Load those itself. Still **at most one** language-family skill. |
+
+**Pack** when the parent already has the bodies, the child will use most
+of them, and one round-trip to re-read would cost more than inlining.
+Typical: first builder mint with one language skill + `tdd` / `yagni`;
+verifier mint with `verify-before-done` plus the proving commands;
+reviewer mint with `pr-review` plus the range vs project-main.
+
+**Point** when several skills or MCP servers might apply, the parent
+does not already have the bodies, or only a thin slice of a large guide
+matters. Do not load a catalog into the parent just to pack it.
+
+**Resume** is always delta-only. Do not re-pack skills or MCP guides
+already in that child’s transcript. If a new skill or tool is required
+on this pass, pack that slice or name it — not the whole set again.
+
+**Never**
+
+- Pack the language catalog, every MCP server, or skills for a
+  different role “just in case.”
+- Pack a skill and also tell the child to go read the same file.
+- Point at “load whatever you need” with no ids when the parent already
+  knows the one or two that apply.
+
 ## Workers
 
 | Worker | When |

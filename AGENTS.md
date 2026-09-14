@@ -26,13 +26,16 @@ Do not remint a skill that already has an id here.
 
 Per work item: mint a **clean builder** and a **clean verifier** on the
 first pass; **resume** those subagents for later builds and verifies of
-the same item. Do not reuse the builder as the verifier.
+the same item. Do not reuse the builder as the verifier. On mint, **pack**
+skill/MCP text into the prompt when that is cheaper, otherwise **point**
+the child at the ids (host default: it reads the skill files). Resume is
+delta-only — do not re-pack.
 
 Branch items off **project-main** (`integrate/<slug>`), land each
 merge-ready item there (serialized), then land project-main on trunk.
 **manager** picks PR vs merge-and-delete from how many items are in
 flight. Full rules: [docs/SDLC.md](docs/SDLC.md) (Project-main,
-Subagents per work item).
+Subagents per work item, Spawn prompts).
 
 ## Inventory
 
