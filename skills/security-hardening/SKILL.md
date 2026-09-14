@@ -72,7 +72,7 @@ Host and personal-account locks are **Never**, not Ask first. There is no “sup
 | **security** | This gate at **LLD (trust boundaries)** and **PR**; skill intake (repo path `docs/INTAKE.md`) | Monthly vuln cadence (Stage 8 is not this gate) |
 | **operator** | Vuln severity calls, extra hosts, personal-account exceptions | Day-to-day intake scans |
 | **tester** | CI secret-scan and dependency-audit **hooks** | Rewriting this skill or skipping **security** because CI is green |
-| **builder** | Building behind the gate | Self-review as the **security** PR gate (fresh-context review) |
+| **builder** | Building behind the gate | Self-review as the **security** PR gate |
 | **manager** | SDLC after-act | Blessing a ship that skipped **security** |
 
 Escalate vulns to the operator. Do not bury them in a “follow-up” with no ticket ID.

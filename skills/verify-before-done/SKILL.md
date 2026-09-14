@@ -9,6 +9,11 @@ Rewrite inspired by Superpowers `verification-before-completion` (obra/superpowe
 
 Pairs with SDLC Stage 4: notify **landed+verified**, not “pushed” and not LGTM without evidence.
 
+The **proving command** is always re-run. The **verifier subagent** is
+not: first verify of a work item is a clean verifier; later verifies of
+that item **resume** it. Never use the builder as the verifier. See
+[docs/SDLC.md](../../docs/SDLC.md) (Subagents per work item).
+
 ## Iron law
 
 **No completion claims without fresh verification evidence.**
@@ -55,7 +60,7 @@ Skip a step = claiming, not verifying.
 | Role | Owns | Does not own |
 | --- | --- | --- |
 | **builder** | Running this gate before ship claims | Skipping **security** on skill-home PRs |
-| **tester** | CI that produces evidence | Claiming product DoD from fmt-only green |
+| **tester** | CI that produces evidence; verifier subagent for the item | Claiming product DoD from fmt-only green; minting a new verifier every loop |
 | **security** | Intake / PR security clear | Day-to-day verify coaching |
 | **manager** | After-act landed+verified | Blessing without evidence |
 
@@ -64,6 +69,7 @@ Skip a step = claiming, not verifying.
 - Wording that implies success without a command in this turn
 - “Just this once” / “I’m tired” / “agent said it’s fine”
 - Moving on because the diff “looks right”
+- Using the builder as the verifier, or minting a new verifier every loop
 - Using managed Superpowers verify skill instead of this id
 
 Stop. Run the proof. Or say what is still unverified.

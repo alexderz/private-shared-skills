@@ -24,6 +24,11 @@ from a managed Superpowers pack.
 Pick the tool that matches the role. Improvise when the work needs it.
 Do not remint a skill that already has an id here.
 
+Per work item: mint a **clean builder** and a **clean verifier** on the
+first pass; **resume** those subagents for later builds and verifies of
+the same item. Do not reuse the builder as the verifier. Full rule:
+[docs/SDLC.md](docs/SDLC.md) (Subagents per work item).
+
 ## Inventory
 
 Authoritative table: [SOURCES.md](SOURCES.md). Bundles: [README.md](README.md).

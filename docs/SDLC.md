@@ -71,7 +71,9 @@ Break into Tasks/Bugs with acceptance criteria and an LLD link.
 
 Implement and test at max safe parallelism. **Do not exit Stage 4 after
 one pass.** Loop implement → test → fix until the ticket Definition of
-Done is actually met.
+Done is actually met. Use **one builder subagent and one verifier
+subagent per work item** for that loop (see [Subagents per work
+item](#subagents-per-work-item)).
 
 DoD includes: acceptance on the ticket, tests/verification evidence, PR
 cites a ticket ID when the project uses tickets, no silent scope leftover.
@@ -82,11 +84,14 @@ SHA in [SOURCES.md](../SOURCES.md) for that id. Empty SHA means no body
 may land. Remote agent PRs into this repo still pass **security intake**.
 Workers **do not bypass** intake, SHA pins, or security LLD/PR gates.
 
-### Stage 5 Review gate (fresh-context, before integrate)
+### Stage 5 Review gate (before integrate)
 
-Review **before** Stage 6 integrate. The reviewer is a **fresh-context**
-session — not the implementer session that wrote the diff. Same-session
-self-review does not count.
+Review **before** Stage 6 integrate. The reviewer is **not** the builder
+who wrote the diff. Same-session self-review does not count.
+
+First review of this PR: mint a **clean reviewer**. Later review rounds
+on the same PR (after fixes): **resume that reviewer**. Do not mint a
+new reviewer each round, and do not feed it the builder’s transcript.
 
 Reviewer approves only if the PR meets the ticket + LLD **and** the
 **security** PR gate (intake, SHA pins, trust-boundary deltas). Security
@@ -94,8 +99,8 @@ at PR is a gate, not deferred to Stage 8 monthly.
 
 ### Stage 6 Integration
 
-Only after Stage 5 fresh-context review. More Tasks, not a special
-ceremony.
+Only after Stage 5 review (clean reviewer, not the builder). More Tasks,
+not a special ceremony.
 
 ### Stage 7 Release
 
@@ -109,6 +114,49 @@ Vuln / updates / new solutions review. Recurrence note only until
 Monthly is **not** the security gate. **security** already gated trust
 boundaries at LLD and the PR. Monthly is cadence review of
 vulns/updates/new solutions, not a substitute for those gates.
+
+## Subagents per work item
+
+A **work item** is one Task, Bug, or PR — one implementable unit. The
+orchestrator (manager session, parent agent, or workflow) keeps two ids
+per item: `builder_id` and `verifier_id`. Stage 5 adds `reviewer_id`.
+Those three must not be the same agent.
+
+| Role | First pass on this item | Later passes on this item |
+| --- | --- | --- |
+| **builder** | Mint a **clean** subagent. Store `builder_id`. | **Resume** `builder_id`. Prompt only the delta. |
+| **verifier** | Mint a **clean** subagent. Never the builder. Store `verifier_id`. | **Resume** `verifier_id`. Prompt only the delta. Re-run proving commands. |
+| **reviewer** (Stage 5) | Mint a **clean** subagent. Never the builder. Store `reviewer_id`. | **Resume** `reviewer_id` for re-review of the same PR. |
+
+**Clean** means an empty transcript except the crafted task: ticket /
+LLD / acceptance, paths, and standards. Do not seed it with another
+role’s chat, and do not use the orchestrator as the builder or verifier.
+
+**Resume** means continue that subagent (`resume_from` that id, or the
+host’s equivalent). The agent already read the item. Do not re-paste the
+spec, the tree, or prior logs it produced. Send what changed, what
+failed, and what to do next.
+
+**Never**
+
+- Builder verifies (or reviewer-reviews) its own work as the only gate.
+- Verifier or reviewer is given the builder’s transcript as memory.
+- An item’s builder / verifier / reviewer is reused on a **different**
+  item.
+- A new builder or verifier is minted on every Stage 4 loop when the
+  previous one for this item is still resumable.
+
+**Fallback.** If resume fails (expired, quota, host error), mint a new
+clean agent of the **same role** for this item and replace the stored
+id. Pass a short handoff (paths, decisions, open failures) — still not
+the other role’s transcript.
+
+**Overflow.** If a resumed transcript is too large to be useful, replace
+that role’s agent the same way (clean mint + short handoff). Do not
+rotate roles to “save” context.
+
+Orchestrators that spawn in parallel still mint **one pair per item**,
+not one pair per loop. Independent items get independent pairs.
 
 ## Workers
 
@@ -147,10 +195,10 @@ No auto-update.
 | `tracker-sdlc` | manager / architect | Empty dir until a first-party body |
 | `cursor-cloud-agents-when` | architect | Empty dir until a first-party body |
 | `tdd` | builder | Fail-first |
-| `pr-review` | architect / security | Fresh-context; Standards vs Spec |
+| `pr-review` | architect / security | Reviewer ≠ builder; resume reviewer on later rounds; Standards vs Spec |
 | `security-hardening` | security | Always / Ask first / Never |
 | `shell-safety` | security / tester | Classify before a command runs |
-| `verify-before-done` | builder / tester | Stage 4 / notify landed+verified |
+| `verify-before-done` | builder / tester | Stage 4 / notify landed+verified; resume verifier |
 | `yagni` | architect / builder | Smallest change that meets this Task |
 | `modern-python` | builder | uv / ruff / ty / pytest |
 | `golang-testing` | builder / tester | Go test shape |

@@ -17,7 +17,8 @@ SHA-pinned, intake-scanned, and loadable by id.
 3. Role split: architect design, builder ship, tester CI, security
    intake/gates, manager board.
 4. Stage −1 → 0 → … → 7 with **Stage 4 as a loop** until DoD; notify
-   landed+verified.
+   landed+verified. One clean builder and one clean verifier per work
+   item; later loops **resume** those subagents.
 
 ## Non-goals
 
