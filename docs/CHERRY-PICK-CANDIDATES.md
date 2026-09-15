@@ -48,14 +48,12 @@ authorize copying those upstream files.
   `cursor-cloud-agents-when`) — written here later; not vendor
   cherry-picks.
 
-## Suggested intake order
+## Landed vs remaining (historical Stage 0 list)
 
-**security** decides order. Suggested only:
+This file is not the live pin list — see [SOURCES.md](../SOURCES.md).
+Bodies already on `main` (do not remint without a new **security** cut):
+`security-hardening`, `tdd`, `verify-before-done`, `pr-review`,
+`shell-safety`, `modern-python`, `golang-testing`, plus later fills
+(`yagni`, `golang-safety`, `golang-security`, language pack).
 
-1. `security-hardening` — done (first-party; skip vendor intake).
-2. `tdd`, `verify-before-done`, `pr-review` — process cut; check
-   managed-Superpowers overlap before any SHA.
-3. `shell-safety` — first-party compress; reference-only look at
-   konstruktoid, then SkillSpector if any third-party lines remain.
-4. `modern-python`, `golang-testing` — still need security clear + SHA
-   pin + SkillSpector before a body.
+Still empty first-party ids: `tracker-sdlc`, `cursor-cloud-agents-when`.
